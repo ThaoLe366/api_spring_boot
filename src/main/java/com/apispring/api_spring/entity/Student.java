@@ -10,44 +10,43 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
-@Data
-@AllArgsConstructor
 @Entity
 @Table(name = "student")
 public class Student {
 
     @Id
-    @GeneratedValue
     @NonNull
-    @Column(name = "student_id")
-    private int studentId;
+    @Column (name = "student_id")
+    private String studentId;
 
-    @Column(name = "student_name")
-    private String studentName;
 
-    @Column(name = "student_birthday")
-    private Date studentBirthday;
+    @Column(name = "Name")
+    private String name;
 
-    @Column(name = "student_phone")
-    private String studentPhone;
+    @Column(name = "Birthday")
+    private Date birthday;
 
-    @Column(name = "student_address")
-    private String studentAddress;
+    @Column(name = "Phone")
+    private String phone;
 
-    @Column(name = "student_email")
-    private String studentEmail;
+    @Column(name = "Address")
+    private String address;
 
-    @Column(name = "student_image")
-    private String studentImage;
+    @Column(name = "Email")
+    private String email;
 
-    @Column(name = "student_code") // mã số sv
-    private String studentCode;
+    @Column(name = "Image")
+    private String image;
+
 
     @OneToOne
     private Account account;
 
     @OneToMany(mappedBy = "_class")
     private Collection<StudentClass> classes;
+
+
+
 
     public Collection<StudentClass> getClasses() {
         return classes;
@@ -57,75 +56,68 @@ public class Student {
         this.classes = classes;
     }
 
-    public String getStudentCode() {
-        return studentCode;
-    }
 
-    public void setStudentCode(String studentCode) {
-        this.studentCode = studentCode;
-    }
-
-    public int getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
     public String getStudentName() {
-        return studentName;
+        return name;
     }
 
     public void setStudentName(String studentName) {
-        this.studentName = studentName;
+        this.name = studentName;
     }
 
     public Date getStudentBirthday() {
-        return studentBirthday;
+        return birthday;
     }
 
     public void setStudentBirthday(Date studentBirthday) {
-        this.studentBirthday = studentBirthday;
+        this.birthday = studentBirthday;
     }
 
     public String getStudentPhone() {
-        return studentPhone;
+        return phone;
     }
 
     public void setStudentPhone(String studentPhone) {
-        this.studentPhone = studentPhone;
+        this.phone = studentPhone;
     }
 
     public String getStudentAddress() {
-        return studentAddress;
+        return address;
     }
 
     public void setStudentAddress(String studentAddress) {
-        this.studentAddress = studentAddress;
+        this.address = studentAddress;
     }
 
     public String getStudentEmail() {
-        return studentEmail;
+        return email;
     }
 
     public void setStudentEmail(String studentEmail) {
-        this.studentEmail = studentEmail;
+        this.email = studentEmail;
     }
 
     public String getStudentImage() {
-        return studentImage;
+        return image;
     }
 
     public void setStudentImage(String studentImage) {
-        this.studentImage = studentImage;
+        this.image = studentImage;
     }
 
-    public Account getAccountId() {
+    public Account getAccount() {
         return account;
     }
 
-    public void setAccountId(Account account) {
+    public void setAccount(Account account) {
         this.account = account;
     }
 

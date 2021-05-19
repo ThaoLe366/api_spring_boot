@@ -20,7 +20,7 @@ public class StudentController {
     }
 
     @GetMapping("/student/{id}")
-    public Student getInfo(@PathVariable int id) {
+    public Student getInfo(@PathVariable String  id) {
         return studentService.getStudentById(id);
     }
 
@@ -53,7 +53,6 @@ public class StudentController {
         oldStudent.setStudentEmail(student.getStudentEmail());
         oldStudent.setClasses(student.getClasses());
         oldStudent.setStudentImage(student.getStudentImage());
-        oldStudent.setStudentCode(student.getStudentCode());
         oldStudent.setStudentName(student.getStudentName());
         oldStudent.setStudentBirthday(student.getStudentBirthday());
         //For update paddword

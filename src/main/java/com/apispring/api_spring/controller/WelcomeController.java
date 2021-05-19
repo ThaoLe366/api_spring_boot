@@ -53,7 +53,7 @@ public class WelcomeController {
         else if(role==2){ //Student
             Account account2=  userDetailService.createUser(account);
             Student newStudent= new Student();
-            newStudent.setAccountId(account2);
+            newStudent.setAccount(account2);
             studentService.createStudent(newStudent);
 
 

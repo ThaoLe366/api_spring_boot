@@ -14,11 +14,11 @@ public class SchoolTime {
     @Column(name = "schooltime_order")
     private int schoolTimeOrder;
 
-    @Column (name = "schooltime_starttime")
-    private Time schoolTimeStartTime;
+    @Column (name = "starting_time")
+    private Time startingTime;
 
-    @Column (name = "schooltime_tndtime")
-    private Time schoolTimeEndTime;
+    @Column (name = "end_time")
+    private Time endTime;
 
     public int getSchoolTimeOrder() {
         return schoolTimeOrder;
@@ -28,20 +28,20 @@ public class SchoolTime {
         this.schoolTimeOrder = schoolTimeOrder;
     }
 
-    public Time getSchoolTimeStartTime() {
-        return schoolTimeStartTime;
+    public Time getStartingTime() {
+        return startingTime;
     }
 
-    public void setSchoolTimeStartTime(Time schoolTimeStartTime) {
-        this.schoolTimeStartTime = schoolTimeStartTime;
+    public void setStartingTime(Time startingTime) {
+        this.startingTime = startingTime;
     }
 
-    public Time getSchoolTimeEndTime() {
-        return schoolTimeEndTime;
+    public Time getEndTime() {
+        return endTime;
     }
 
-    public void setSchoolTimeEndTime(Time schoolTimeEndTime) {
-        this.schoolTimeEndTime = schoolTimeEndTime;
+    public void setEndTime(Time endTime) {
+        this.endTime = endTime;
     }
 
     public SchoolTime() {

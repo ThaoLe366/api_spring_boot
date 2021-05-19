@@ -11,17 +11,17 @@ public class Subject {
 
     @Id
     @NonNull
-    @Column(name = "subject_id")
+    @Column(name = "SubjectId")
     private int subjectId;
 
-    @Column(name = "subject_name")
-    private String subjectName;
+    @Column(name = "Name")
+    private String name;
 
-    @Column(name = "subject_nocredit")
-    private int subjectNoCredit;
+    @Column(name = "NumberOfCredit")
+    private int numberOfCredit;
 
-    @Column(name = "subject_description")
-    private String subjectDescription;
+    @Column(name = "Description")
+    private String description;
 
     @OneToMany(mappedBy = "subject")
     private Collection<Class> classes;
@@ -42,34 +42,36 @@ public class Subject {
         this.subjectId = subjectId;
     }
 
-    public String getSubjectName() {
-        return subjectName;
+    public String getName() {
+        return name;
     }
 
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getSubjectNoCredit() {
-        return subjectNoCredit;
+    public int getNumberOfCredit() {
+        return numberOfCredit;
     }
 
-    public void setSubjectNoCredit(int subjectNoCredit) {
-        this.subjectNoCredit = subjectNoCredit;
+    public void setNumberOfCredit(int numberOfCredit) {
+        this.numberOfCredit = numberOfCredit;
     }
 
-    public String getSubjectDescription() {
-        return subjectDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSubjectDescription(String subjectDescription) {
-        this.subjectDescription = subjectDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Subject(String subjectName, int subjectNoCredit, String subjectDescription) {
-        this.subjectName = subjectName;
-        this.subjectNoCredit = subjectNoCredit;
-        this.subjectDescription = subjectDescription;
+    public Subject(int subjectId, String name, int numberOfCredit, String description, Collection<Class> classes) {
+        this.subjectId = subjectId;
+        this.name = name;
+        this.numberOfCredit = numberOfCredit;
+        this.description = description;
+        this.classes = classes;
     }
 
     public Subject() {

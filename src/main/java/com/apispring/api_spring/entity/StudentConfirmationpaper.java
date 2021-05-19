@@ -19,12 +19,12 @@ public class StudentConfirmationpaper {
     private Date requiredTime;
 
     @ManyToOne
-    @MapsId("studentId")       //foreign key with table Student
+    @MapsId("studentid")       //foreign key with table Student
     private Student student;
 
     //foreign key with table ConfirmationPaper
     @ManyToOne
-    @MapsId("confirmationPaperId")
+    @MapsId("confirmationPaperid")
     private ConfirmationPaper confirmationPaper;
 
     @NonNull

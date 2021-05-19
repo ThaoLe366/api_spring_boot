@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class StudentClassId implements Serializable {
 
     @Column(name = "student_id")
-    private int studentId;
+    private String studentId;
 
     @Column(name = "class_id")
     private int classId;
