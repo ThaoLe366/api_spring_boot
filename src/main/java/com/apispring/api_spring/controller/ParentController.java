@@ -55,6 +55,7 @@ public class ParentController {
         oldParent.setParentImage(parent.getParentImage());
         oldParent.setParentName(parent.getParentName());
         oldParent.setParentBirthday(parent.getParentBirthday());
+       oldParent.setStudentID(parent.getStudentID());
         //For update password
         Account oldAccount = oldParent.getAccount();
         //Base on way add data

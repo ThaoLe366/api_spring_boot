@@ -53,6 +53,8 @@ public class WelcomeController {
             Student newStudent= new Student();
             newStudent.setAccountId(account2);
             studentService.createStudent(newStudent);
+
+
             return account2;
         }
         else{  //role=3: Parent
