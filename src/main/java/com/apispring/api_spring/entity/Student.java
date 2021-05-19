@@ -20,23 +20,23 @@ public class Student {
     private String studentId;
 
 
-    @Column(name = "student_name")
-    private String studentName;
+    @Column(name = "Name")
+    private String name;
 
-    @Column(name = "student_birthday")
-    private Date studentBirthday;
+    @Column(name = "Birthday")
+    private Date birthday;
 
-    @Column(name = "student_phone")
-    private String studentPhone;
+    @Column(name = "Phone")
+    private String phone;
 
-    @Column(name = "student_address")
-    private String studentAddress;
+    @Column(name = "Address")
+    private String address;
 
-    @Column(name = "student_email")
-    private String studentEmail;
+    @Column(name = "Email")
+    private String email;
 
-    @Column(name = "student_image")
-    private String studentImage;
+    @Column(name = "Image")
+    private String image;
 
 
     @OneToOne
@@ -66,58 +66,58 @@ public class Student {
     }
 
     public String getStudentName() {
-        return studentName;
+        return name;
     }
 
     public void setStudentName(String studentName) {
-        this.studentName = studentName;
+        this.name = studentName;
     }
 
     public Date getStudentBirthday() {
-        return studentBirthday;
+        return birthday;
     }
 
     public void setStudentBirthday(Date studentBirthday) {
-        this.studentBirthday = studentBirthday;
+        this.birthday = studentBirthday;
     }
 
     public String getStudentPhone() {
-        return studentPhone;
+        return phone;
     }
 
     public void setStudentPhone(String studentPhone) {
-        this.studentPhone = studentPhone;
+        this.phone = studentPhone;
     }
 
     public String getStudentAddress() {
-        return studentAddress;
+        return address;
     }
 
     public void setStudentAddress(String studentAddress) {
-        this.studentAddress = studentAddress;
+        this.address = studentAddress;
     }
 
     public String getStudentEmail() {
-        return studentEmail;
+        return email;
     }
 
     public void setStudentEmail(String studentEmail) {
-        this.studentEmail = studentEmail;
+        this.email = studentEmail;
     }
 
     public String getStudentImage() {
-        return studentImage;
+        return image;
     }
 
     public void setStudentImage(String studentImage) {
-        this.studentImage = studentImage;
+        this.image = studentImage;
     }
 
-    public Account getAccountId() {
+    public Account getAccount() {
         return account;
     }
 
-    public void setAccountId(Account account) {
+    public void setAccount(Account account) {
         this.account = account;
     }
 

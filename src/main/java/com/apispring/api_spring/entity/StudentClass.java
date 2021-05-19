@@ -23,19 +23,19 @@ public class StudentClass {
     @MapsId("classId")
     private Class _class;
 
-    @Column (name = "middle_mark")
+    @Column (name = "MiddleMark")
     private float middleMark;
 
-    @Column (name = "final_mark")
+    @Column (name = "FinalMark")
     private float finalMark;
 
-    @Column (name = "rating")
+    @Column (name = "Rating")
     private int rating;
 
-    @Column (name = "comment")
+    @Column (name = "Comment")
     private String comment;
 
-    @Column (name = "create_date")
+    @Column (name = "CreateDate")
     private Date createDate;
 
 

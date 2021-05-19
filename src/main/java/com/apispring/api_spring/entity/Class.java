@@ -32,23 +32,23 @@ public class Class {
     @Column (name = "semester")
     private int semester;
 
-    @Column (name = "studyingYear")
+    @Column (name = "studying_year")
     private int studyingYear;
 
-    @Column (name = "classStartDate")
-    private Date classStartDate;
+    @Column (name = "starting_date")
+    private Date startingDate;
 
-    @Column (name = "classEndDate")
-    private Date classEndDate;
+    @Column (name = "endDate")
+    private Date endDate;
 
-    @Column (name = "classDayOfWeek")
-    private int classDayOfWeek;
+    @Column (name = "day_of_week")
+    private int dayOfWeek;
 
-    @Column (name = "classRoom")
+    @Column (name = "class_room")
     private String classRoom;
 
     @Column (name = "startSchoolTime") ///Tiết học
-    private int startSchoolTime;
+    private int startingSchoolTime;
 
     @Column (name = "endSchoolTime")
     private int endSchoolTime;
@@ -104,27 +104,27 @@ public class Class {
     }
 
     public Date getClassStartDate() {
-        return classStartDate;
+        return startingDate;
     }
 
     public void setClassStartDate(Date classStartDate) {
-        this.classStartDate = classStartDate;
+        this.startingDate = classStartDate;
     }
 
     public Date getClassEndDate() {
-        return classEndDate;
+        return endDate;
     }
 
     public void setClassEndDate(Date classEndDate) {
-        this.classEndDate = classEndDate;
+        this.endDate = classEndDate;
     }
 
     public int getClassDayOfWeek() {
-        return classDayOfWeek;
+        return dayOfWeek;
     }
 
     public void setClassDayOfWeek(int classDayOfWeek) {
-        this.classDayOfWeek = classDayOfWeek;
+        this.dayOfWeek = classDayOfWeek;
     }
 
     public String getClassRoom() {
@@ -136,11 +136,11 @@ public class Class {
     }
 
     public int getStartSchoolTime() {
-        return startSchoolTime;
+        return startingSchoolTime;
     }
 
     public void setStartSchoolTime(int startSchoolTime) {
-        this.startSchoolTime = startSchoolTime;
+        this.startingSchoolTime = startSchoolTime;
     }
 
     public int getEndSchoolTime() {
@@ -160,10 +160,10 @@ public class Class {
         this.teacher = temp.getTeacher();
         this.semester = temp.getSemester();
         this.studyingYear = temp.getStudyingYear();
-        this.classStartDate = temp.getClassStartDate();
-        this.classEndDate = temp.getClassEndDate();
-        this.classDayOfWeek = temp.getClassDayOfWeek();
-        this.startSchoolTime = temp.getStartSchoolTime();
+        this.startingDate = temp.getClassStartDate();
+        this.endDate = temp.getClassEndDate();
+        this.dayOfWeek = temp.getClassDayOfWeek();
+        this.startingSchoolTime = temp.getStartSchoolTime();
         this.endSchoolTime = temp.getEndSchoolTime();
         this.classRoom = temp.getClassRoom();
     }

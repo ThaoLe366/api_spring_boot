@@ -30,23 +30,23 @@ public class Parent {
     @Column(name = "parent_id")
     private int parentId;
 
-    @Column(name = "parent_name")
-    private String parentName;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "parent_birthday")
-    private Date parentBirthday;
+    @Column(name = "birthday")
+    private Date birthday;
 
-    @Column(name = "parent_phone")
-    private String parentPhone;
+    @Column(name = "phone")
+    private String phone;
 
-    @Column(name = "parent_address")
-    private String parentAddress;
+    @Column(name = "address")
+    private String address;
 
-    @Column(name = "parent_email")
-    private String parentEmail;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "parent_image")
-    private String parentImage;
+    @Column(name = "image")
+    private String image;
 
     @OneToOne
     private Account account;
@@ -63,6 +63,14 @@ public class Parent {
     @JoinColumn(name = "childId")
     private Student student;
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public int getParentId() {
         return parentId;
     }
@@ -72,51 +80,51 @@ public class Parent {
     }
 
     public String getParentName() {
-        return parentName;
+        return name;
     }
 
     public void setParentName(String parentName) {
-        this.parentName = parentName;
+        this.name = parentName;
     }
 
     public Date getParentBirthday() {
-        return parentBirthday;
+        return birthday;
     }
 
     public void setParentBirthday(Date parentBirthday) {
-        this.parentBirthday = parentBirthday;
+        this.birthday = parentBirthday;
     }
 
     public String getParentPhone() {
-        return parentPhone;
+        return phone;
     }
 
     public void setParentPhone(String parentPhone) {
-        this.parentPhone = parentPhone;
+        this.phone = parentPhone;
     }
 
     public String getParentAddress() {
-        return parentAddress;
+        return address;
     }
 
     public void setParentAddress(String parentAddress) {
-        this.parentAddress = parentAddress;
+        this.address = parentAddress;
     }
 
     public String getParentEmail() {
-        return parentEmail;
+        return email;
     }
 
     public void setParentEmail(String parentEmail) {
-        this.parentEmail = parentEmail;
+        this.email = parentEmail;
     }
 
     public String getParentImage() {
-        return parentImage;
+        return image;
     }
 
     public void setParentImage(String parentImage) {
-        this.parentImage = parentImage;
+        this.image = parentImage;
     }
 
     public Account getAccountId() {
