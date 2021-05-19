@@ -9,17 +9,14 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
-@Data
-@AllArgsConstructor
 @Entity
 @Table(name = "student")
 public class Student {
 
     @Id
-    @GeneratedValue
     @NonNull
     @Column (name = "student_id")
-    private int studentId;
+    private String studentId;
 
     @Column (name = "student_name")
     private String studentName;
@@ -39,8 +36,6 @@ public class Student {
     @Column (name = "student_image")
     private String studentImage;
 
-    @Column (name = "student_code") // mã số sv
-    private String studentCode;
 
     @OneToOne
     @JoinColumn (name = "account_id") // foreign key with table Account
@@ -48,6 +43,9 @@ public class Student {
 
     @OneToMany(mappedBy = "_class")
     private Collection<StudentClass> classes;
+
+
+
 
     public Collection<StudentClass> getClasses() {
         return classes;
@@ -57,19 +55,12 @@ public class Student {
         this.classes = classes;
     }
 
-    public String getStudentCode() {
-        return studentCode;
-    }
 
-    public void setStudentCode(String studentCode) {
-        this.studentCode = studentCode;
-    }
-
-    public int getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 

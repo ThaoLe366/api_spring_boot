@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
@@ -50,6 +51,16 @@ public class Parent {
     @OneToOne
     @JoinColumn (name = "account_id") // foreign key with table Account
     private Account account;
+
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
 
     public int getParentId() {
         return parentId;

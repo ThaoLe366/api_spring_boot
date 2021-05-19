@@ -17,13 +17,13 @@ import java.util.Date;
 public class StudentConfirmpaperId implements Serializable {
 
     @Column(name = "student_id")
-    private int studentId;
+    private String studentid;
 
     @Column(name = "required_time")
     private Date requiredTime;
 
     @Column(name = "confirmationPaper_id")
-    private int confirmationPaperId;
+    private int confirmationPaperid;
 
 
 }
