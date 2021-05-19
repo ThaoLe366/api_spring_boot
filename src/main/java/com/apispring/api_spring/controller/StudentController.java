@@ -25,24 +25,24 @@ public class StudentController {
     }
 
     @PutMapping("/student/updateInfo")
-    public Student updateInfo(@RequestBody Student student){
-            Student oldStudent = studentService.getStudentById(student.getStudentId());
+    public Student updateInfo(@RequestBody Student student) {
+        Student oldStudent = studentService.getStudentById(student.getStudentId());
 
 
-            //Update profile
-            oldStudent.setStudentPhone(student.getStudentPhone());
-            oldStudent.setStudentAddress(student.getStudentAddress());
+        //Update profile
+        oldStudent.setStudentPhone(student.getStudentPhone());
+        oldStudent.setStudentAddress(student.getStudentAddress());
 
-            //For update paddword
-             Account oldAccount= oldStudent.getAccount();
-            oldAccount.setPassword(student.getAccount().getPassword());
-            oldStudent.setAccount(oldAccount);
-          return   studentService.updateInfo(oldStudent);
+        //For update paddword
+        Account oldAccount = oldStudent.getAccount();
+        oldAccount.setPassword(student.getAccount().getPassword());
+        oldStudent.setAccount(oldAccount);
+        return studentService.updateInfo(oldStudent);
 
     }
 
     @PutMapping("/student/default")
-    public Student updateDefault(@RequestBody Student student){
+    public Student updateDefault(@RequestBody Student student) {
         Student oldStudent = studentService.getStudentById(student.getStudentId());
 
 
@@ -57,10 +57,10 @@ public class StudentController {
         oldStudent.setStudentName(student.getStudentName());
         oldStudent.setStudentBirthday(student.getStudentBirthday());
         //For update paddword
-        Account oldAccount= oldStudent.getAccount();
+        Account oldAccount = oldStudent.getAccount();
         oldAccount.setPassword(student.getAccount().getPassword());
         oldStudent.setAccount(oldAccount);
-        return   studentService.updateInfo(oldStudent);
+        return studentService.updateInfo(oldStudent);
 
     }
 }

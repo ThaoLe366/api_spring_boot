@@ -26,41 +26,33 @@ public class Parent {
     @Id
     @GeneratedValue
     @NonNull
-    @Column (name = "parent_id")
+    @Column(name = "parent_id")
     private int parentId;
 
-    @Column (name = "parent_name")
+    @Column(name = "parent_name")
     private String parentName;
 
-    @Column (name = "parent_birthday")
+    @Column(name = "parent_birthday")
     private Date parentBirthday;
 
-    @Column (name = "parent_phone")
+    @Column(name = "parent_phone")
     private String parentPhone;
 
-    @Column (name = "parent_address")
+    @Column(name = "parent_address")
     private String parentAddress;
 
-    @Column (name = "parent_email")
+    @Column(name = "parent_email")
     private String parentEmail;
 
-    @Column (name = "parent_image")
+    @Column(name = "parent_image")
     private String parentImage;
 
     @OneToOne
     private Account account;
 
-
-
-    public int getStudentID() {
-        return studentID;
-    }
-
-    public void setStudentID(int studentID) {
-        this.studentID = studentID;
-    }
-
-    private int studentID;
+    @OneToOne
+    @JoinColumn(name = "childId")
+    private Student student;
 
     public int getParentId() {
         return parentId;

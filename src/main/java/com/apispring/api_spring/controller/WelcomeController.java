@@ -12,6 +12,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Random;
+
 @RestController
 public class WelcomeController {
 
@@ -55,15 +57,21 @@ public class WelcomeController {
             studentService.createStudent(newStudent);
 
 
+            String emailDefault= "parent_" +account.getUsername();
+            //Create Parent account
+            Random r = new Random();
+            String passwordDefault=String.valueOf(r.nextInt(12000-10000)+10000);
+            Account accountParent= new Account(emailDefault, passwordDefault);
+            userDetailService.createUser(accountParent);
+
+            Parent parent= new Parent();
+            parent.setStudent(newStudent);
+
+            parent.setAccount(accountParent);
+            parentService.createParent(parent);
             return account2;
         }
-        else{  //role=3: Parent
-            Account account3=  userDetailService.createUser(account);
-            Parent newParent= new Parent();
-            newParent.setAccountId(account3);
-            parentService.createParent(newParent);
-            return account3;
-        }
+        return null;
        // return "Form Teacher not successful";
     }
 

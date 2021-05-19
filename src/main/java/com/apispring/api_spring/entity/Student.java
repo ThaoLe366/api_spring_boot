@@ -1,4 +1,5 @@
 package com.apispring.api_spring.entity;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,28 +19,28 @@ public class Student {
     @Id
     @GeneratedValue
     @NonNull
-    @Column (name = "student_id")
+    @Column(name = "student_id")
     private int studentId;
 
-    @Column (name = "student_name")
+    @Column(name = "student_name")
     private String studentName;
 
-    @Column (name = "student_birthday")
+    @Column(name = "student_birthday")
     private Date studentBirthday;
 
-    @Column (name = "student_phone")
+    @Column(name = "student_phone")
     private String studentPhone;
 
-    @Column (name = "student_address")
+    @Column(name = "student_address")
     private String studentAddress;
 
-    @Column (name = "student_email")
+    @Column(name = "student_email")
     private String studentEmail;
 
-    @Column (name = "student_image")
+    @Column(name = "student_image")
     private String studentImage;
 
-    @Column (name = "student_code") // mã số sv
+    @Column(name = "student_code") // mã số sv
     private String studentCode;
 
     @OneToOne

@@ -21,10 +21,17 @@ public class ParentController {
     }
 
     @GetMapping("/parent/{id}")
-    public Parent getInfoTeacher(@PathVariable int id) {
+    public Parent getInfoParent(@PathVariable int id) {
 
         return parentService.getParentById(id);
     }
+
+    @GetMapping("/parent/student/{id}")
+    public Parent getParentByChildrenId(@PathVariable int id) {
+
+        return parentService.getParentByChildrenID(id);
+    }
+
 
     @PutMapping("/parent/updateInfo")
     public Parent updateInfo(@RequestBody Parent parent) {
@@ -34,7 +41,6 @@ public class ParentController {
         //Update profile
         oldParent.setParentPhone(parent.getParentPhone());
         oldParent.setParentAddress(parent.getParentAddress());
-
 
         //For update password
         Account oldAccount = oldParent.getAccount();
@@ -55,7 +61,7 @@ public class ParentController {
         oldParent.setParentImage(parent.getParentImage());
         oldParent.setParentName(parent.getParentName());
         oldParent.setParentBirthday(parent.getParentBirthday());
-       oldParent.setStudentID(parent.getStudentID());
+        oldParent.setStudent(parent.getStudent());
         //For update password
         Account oldAccount = oldParent.getAccount();
         //Base on way add data

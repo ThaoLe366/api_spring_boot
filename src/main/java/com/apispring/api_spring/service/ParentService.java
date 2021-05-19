@@ -30,4 +30,8 @@ public class ParentService {
         //TODO: Complete when relative done
         //newStudent.setClasses();
     }
+
+    public Parent getParentByChildrenID(int id){
+        return repository.findParentByChildId(id);
+    }
 }
