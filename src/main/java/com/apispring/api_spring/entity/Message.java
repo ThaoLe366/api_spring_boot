@@ -9,11 +9,11 @@ import java.util.Date;
 @Table(name = "message")
 public class Message {
 
-    @Id
-    @GeneratedValue
-    @NonNull
-    @Column(name = "senttime")
-    private Date sentTime;
+//    @Id
+//    @GeneratedValue
+//    @NonNull
+//    @Column(name = "sent_Time")
+//    private Date sentTime;
 
     // foreign key with table Account
     //@Column (name = "sender_account_id")
@@ -21,18 +21,57 @@ public class Message {
 
     //@ManyToOne
     //@JoinColumn(name = "account_id")
-    private int senderAccount;
+    ///private int senderAccount;
 
     // foreign key with table Account
     //@Column (name = "receiver_account_id")
    // private int receiverAccountId;
+
+    @EmbeddedId
+    private MessageId messageId;
+
+    @NonNull
     @ManyToOne
-    @JoinColumn(name = "account_id")
+    @MapsId("senderAccountId")
+    private Account senderAccount;
+
+    @NonNull
+    @ManyToOne
+    @MapsId ("receiverAccountId")
     private Account receiverAccount;
 
+    @NonNull
+    @Column(name = "sent_time", insertable = false, updatable = false)
+    private Date sentTime;
 
     @Column (name = "message_content")
     private String messageContent;
+
+    public MessageId getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(MessageId messageId) {
+        this.messageId = messageId;
+    }
+
+    @NonNull
+    public Account getSenderAccount() {
+        return senderAccount;
+    }
+
+    public void setSenderAccount(@NonNull Account senderAccount) {
+        this.senderAccount = senderAccount;
+    }
+
+    @NonNull
+    public Account getReceiverAccount() {
+        return receiverAccount;
+    }
+
+    public void setReceiverAccount(@NonNull Account receiverAccount) {
+        this.receiverAccount = receiverAccount;
+    }
 
     @NonNull
     public Date getSentTime() {
@@ -50,15 +89,6 @@ public class Message {
     public void setSenderAccountId(Account senderAccount) {
         this.senderAccount = senderAccount;
     }*/
-
-    public Account getReceiverAccount() {
-        return receiverAccount;
-    }
-
-    public void setReceiverAccount(int receiverAccountId) {
-        this.receiverAccount = receiverAccount;
-    }
-
 
     public String getMessageContent() {
         return messageContent;
