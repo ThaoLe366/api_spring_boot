@@ -8,6 +8,9 @@ import com.apispring.api_spring.respository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class StudentService {
     @Autowired
@@ -21,4 +24,18 @@ public class StudentService {
 
         return repository.findById(idStudent).orElse(null);
     }
+//    public Student getStudentByIdAccount(int idAccount){
+//
+//
+//    }
+    //
+    public Student updateInfo(@org.jetbrains.annotations.NotNull Student student){
+       return repository.save(student);
+        //newStudent.setAccount(newStudent.getAccount());
+
+        //TODO: Complete when relative done
+        //newStudent.setClasses();
+    }
+
+
 }

@@ -1,4 +1,5 @@
 package com.apispring.api_spring.entity;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,27 +19,27 @@ public class Student {
     @Column (name = "student_id")
     private String studentId;
 
-    @Column (name = "student_name")
+
+    @Column(name = "student_name")
     private String studentName;
 
-    @Column (name = "student_birthday")
+    @Column(name = "student_birthday")
     private Date studentBirthday;
 
-    @Column (name = "student_phone")
+    @Column(name = "student_phone")
     private String studentPhone;
 
-    @Column (name = "student_address")
+    @Column(name = "student_address")
     private String studentAddress;
 
-    @Column (name = "student_email")
+    @Column(name = "student_email")
     private String studentEmail;
 
-    @Column (name = "student_image")
+    @Column(name = "student_image")
     private String studentImage;
 
 
     @OneToOne
-    @JoinColumn (name = "account_id") // foreign key with table Account
     private Account account;
 
     @OneToMany(mappedBy = "_class")

@@ -21,37 +21,35 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "parent")
+
 public class Parent {
 
     @Id
     @GeneratedValue
     @NonNull
-    @Column (name = "parent_id")
+    @Column(name = "parent_id")
     private int parentId;
 
-    @Column (name = "parent_name")
+    @Column(name = "parent_name")
     private String parentName;
 
-    @Column (name = "parent_birthday")
+    @Column(name = "parent_birthday")
     private Date parentBirthday;
 
-    @Column (name = "parent_phone")
+    @Column(name = "parent_phone")
     private String parentPhone;
 
-    @Column (name = "parent_address")
+    @Column(name = "parent_address")
     private String parentAddress;
 
-    @Column (name = "parent_email")
+    @Column(name = "parent_email")
     private String parentEmail;
 
-    @Column (name = "parent_image")
+    @Column(name = "parent_image")
     private String parentImage;
 
     @OneToOne
-    @JoinColumn (name = "account_id") // foreign key with table Account
     private Account account;
-
 
     public Account getAccount() {
         return account;
@@ -61,6 +59,9 @@ public class Parent {
         this.account = account;
     }
 
+    @OneToOne
+    @JoinColumn(name = "childId")
+    private Student student;
 
     public int getParentId() {
         return parentId;

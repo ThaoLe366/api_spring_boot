@@ -18,7 +18,7 @@ public class Account {
     @GeneratedValue(
             strategy= GenerationType.AUTO
     )
-    @Column(name = "account_id")
+
     private int accountId;
 
     @Column(name = "username")
@@ -28,14 +28,28 @@ public class Account {
     private String password;
 
     @OneToMany(mappedBy = "senderAccount")
-    private Collection<Message> messageCollection;
+    private Collection<Message> messageCollectionSend;
 
-    public Collection<Message> getMessageCollection() {
-        return messageCollection;
+
+    @OneToMany(mappedBy = "receiverAccount")
+    private Collection<Message> messageCollectionReceive;
+
+
+    public Collection<Message> getMessageCollectionSend() {
+        return messageCollectionSend;
     }
 
-    public void setMessageCollection(Collection<Message> messageCollection) {
-        this.messageCollection = messageCollection;
+    public void setMessageCollectionSend(Collection<Message> messageCollectionSend) {
+        this.messageCollectionSend = messageCollectionSend;
+    }
+
+
+    public Collection<Message> getMessageCollectionReceive() {
+        return messageCollectionReceive;
+    }
+
+    public void setMessageCollectionReceive(Collection<Message> messageCollectionReceive) {
+        this.messageCollectionReceive = messageCollectionReceive;
     }
 
     public int getAccountId() {
