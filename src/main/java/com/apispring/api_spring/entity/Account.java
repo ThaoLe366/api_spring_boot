@@ -30,6 +30,7 @@ public class Account {
     @OneToMany(mappedBy = "senderAccount")
     private Collection<Message> messageCollectionSend;
 
+
     @OneToMany(mappedBy = "receiverAccount")
     private Collection<Message> messageCollectionReceive;
 
@@ -41,6 +42,7 @@ public class Account {
     public void setMessageCollectionSend(Collection<Message> messageCollectionSend) {
         this.messageCollectionSend = messageCollectionSend;
     }
+
 
     public Collection<Message> getMessageCollectionReceive() {
         return messageCollectionReceive;
