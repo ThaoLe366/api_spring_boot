@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,28 +19,102 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "PARENT_TBL")
+@Table(name = "parent")
 public class Parent {
 
     @Id
     @GeneratedValue
-    private int ParentID;
+    @NonNull
+    @Column (name = "parent_id")
+    private int parentId;
 
-    private String Name=null;
+    @Column (name = "parent_name")
+    private String parentName;
 
-    private Date Birthday=null;
+    @Column (name = "parent_birthday")
+    private Date parentBirthday;
 
-    private String Phone=null;
+    @Column (name = "parent_phone")
+    private String parentPhone;
 
-    private String Address=null;
+    @Column (name = "parent_address")
+    private String parentAddress;
 
-    private String Email=null;
+    @Column (name = "parent_email")
+    private String parentEmail;
 
-    private String Gender=null;
+    @Column (name = "parent_image")
+    private String parentImage;
 
-    private String Image=null;
+    @OneToOne
+    @JoinColumn (name = "account_id") // foreign key with table Account
+    private Account account;
 
-    private int AccountID;
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    public Date getParentBirthday() {
+        return parentBirthday;
+    }
+
+    public void setParentBirthday(Date parentBirthday) {
+        this.parentBirthday = parentBirthday;
+    }
+
+    public String getParentPhone() {
+        return parentPhone;
+    }
+
+    public void setParentPhone(String parentPhone) {
+        this.parentPhone = parentPhone;
+    }
+
+    public String getParentAddress() {
+        return parentAddress;
+    }
+
+    public void setParentAddress(String parentAddress) {
+        this.parentAddress = parentAddress;
+    }
+
+    public String getParentEmail() {
+        return parentEmail;
+    }
+
+    public void setParentEmail(String parentEmail) {
+        this.parentEmail = parentEmail;
+    }
+
+    public String getParentImage() {
+        return parentImage;
+    }
+
+    public void setParentImage(String parentImage) {
+        this.parentImage = parentImage;
+    }
+
+    public Account getAccountId() {
+        return account;
+    }
+
+    public void setAccountId(Account account) {
+        this.account = account;
+    }
+
+    public Parent() {
+    }
 }

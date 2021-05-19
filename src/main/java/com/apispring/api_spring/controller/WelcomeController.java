@@ -44,21 +44,21 @@ public class WelcomeController {
         if(role==1){ //Teacher
             Account account1=  userDetailService.createUser(account);
             Teacher newTeacher= new Teacher();
-            newTeacher.setAccountID(account1.getId());
+            newTeacher.setAccountID(account1.getAccountId());
             teacherService.createTeacher(newTeacher);
             return account1;
         }
         else if(role==2){ //Student
             Account account2=  userDetailService.createUser(account);
             Student newStudent= new Student();
-            newStudent.setAccountID(account2.getId());
+            newStudent.setAccountId(account2);
             studentService.createStudent(newStudent);
             return account2;
         }
         else{  //role=3: Parent
             Account account3=  userDetailService.createUser(account);
             Parent newParent= new Parent();
-            newParent.setAccountID(account3.getId());
+            newParent.setAccountId(account3);
             parentService.createParent(newParent);
             return account3;
         }
@@ -74,7 +74,7 @@ public class WelcomeController {
 
 
         } catch (Exception ex) {
-            throw new Exception("invalid username/password");
+            throw new Exception(ex.toString());
 
         }
         return jwtUtil.generateToken(authRequest.getUserName());

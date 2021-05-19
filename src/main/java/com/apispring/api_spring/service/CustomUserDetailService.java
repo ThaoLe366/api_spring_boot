@@ -9,9 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static jdk.nashorn.internal.objects.Global.print;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {
@@ -21,8 +18,8 @@ public class CustomUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Account account = repository.findByUserName(userName);
-        return new org.springframework.security.core.userdetails.User(account.getUserName(), account.getPassword(), new ArrayList<>());
+        Account account = repository.findByUsername(userName);
+        return new org.springframework.security.core.userdetails.User(account.getUsername(), account.getPassword(), new ArrayList<>());
     }
 
     public Account createUser(Account newAccount) {
@@ -49,10 +46,10 @@ public class CustomUserDetailService implements UserDetailsService {
     }
 
     public Account updateUser(Account account) {
-        Account existAccount = repository.findById(account.getId()).orElse(null);
+        Account existAccount = repository.findById(account.getAccountId()).orElse(null);
 
         existAccount.setPassword(account.getPassword());
-        existAccount.setUserName(account.getUserName());
+        existAccount.setUsername(account.getUsername());
         return repository.save(existAccount);
     }
 }
