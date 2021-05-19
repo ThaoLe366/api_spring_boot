@@ -20,7 +20,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "parent")
+
 public class Parent {
 
     @Id
@@ -48,7 +48,6 @@ public class Parent {
     private String parentImage;
 
     @OneToOne
-    @JoinColumn (name = "account_id") // foreign key with table Account
     private Account account;
 
     public int getParentId() {

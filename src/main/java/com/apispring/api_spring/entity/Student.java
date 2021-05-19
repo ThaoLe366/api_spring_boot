@@ -43,7 +43,6 @@ public class Student {
     private String studentCode;
 
     @OneToOne
-    @JoinColumn (name = "account_id") // foreign key with table Account
     private Account account;
 
     @OneToMany(mappedBy = "_class")
