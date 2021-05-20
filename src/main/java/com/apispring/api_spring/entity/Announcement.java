@@ -17,10 +17,9 @@ public class Announcement {
     @Column(name = "AnnouncementID")
     private int announcementId;
 
-    //@Column (name = "SenderID")
-    //private int SenderID;
+
     @ManyToOne
-    @JoinColumn(name = "teacher_id", nullable = false)
+    @JoinColumn(name = "teacher_id")
     private Teacher sender;
 
     @Column (name = "content")
@@ -39,7 +38,7 @@ public class Announcement {
     }
 
     public void setSender(Teacher sender) {
-        sender = sender;
+        this.sender = sender;
     }
 
     public Class get_Class() {
@@ -55,7 +54,7 @@ public class Announcement {
     }
 
     public void setAnnouncementID(int announcementID) {
-        announcementID = announcementID;
+        this.announcementId = announcementID;
     }
 
 
@@ -65,7 +64,7 @@ public class Announcement {
     }
 
     public void setContent(String content) {
-        content = content;
+        this.content = content;
     }
 
     public Date getAnnouncementTime() {
@@ -73,7 +72,7 @@ public class Announcement {
     }
 
     public void setAnnouncementTime(Date announcementTime) {
-        announcementTime = announcementTime;
+        this.announcementTime = announcementTime;
     }
 
     public Announcement() {
