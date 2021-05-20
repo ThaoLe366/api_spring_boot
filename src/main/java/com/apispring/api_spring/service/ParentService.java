@@ -18,9 +18,9 @@ public class ParentService {
         return repository.save(newParent);
     }
 
-    public Parent getParentById(int idParent) {
+    public Parent getParentById(String idParent) {
 
-        return repository.findById(idParent).orElse(null);
+        return repository.findById(idParent);
     }
 
     public Parent updateInfo(@org.jetbrains.annotations.NotNull Parent parent){
@@ -31,7 +31,7 @@ public class ParentService {
         //newStudent.setClasses();
     }
 
-    public Parent getParentByChildrenID(int id){
+    public Parent getParentByChildrenID(String id){
         return repository.findParentByChildId(id);
     }
 }

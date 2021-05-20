@@ -15,16 +15,16 @@ public class StudentConfirmationpaper {
 
 
     @NonNull
-    @Column(name = "required_time" , insertable = false, updatable = false)
+    @Column(name = "RequiredTime" , insertable = false, updatable = false)
     private Date requiredTime;
 
     @ManyToOne
-    @MapsId("studentid")       //foreign key with table Student
+    @MapsId("student")       //foreign key with table Student
     private Student student;
 
     //foreign key with table ConfirmationPaper
     @ManyToOne
-    @MapsId("confirmationPaperid")
+    @MapsId("confirmationPaper")
     private ConfirmationPaper confirmationPaper;
 
     @NonNull

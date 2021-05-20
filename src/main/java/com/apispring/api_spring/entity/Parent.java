@@ -24,11 +24,12 @@ import java.util.UUID;
 
 public class Parent {
 
+
+//    @GeneratedValue
     @Id
-    @GeneratedValue
     @NonNull
     @Column(name = "parent_id")
-    private int parentId;
+    private String parentId;
 
     @Column(name = "name")
     private String name;
@@ -71,11 +72,11 @@ public class Parent {
         this.student = student;
     }
 
-    public int getParentId() {
+    public String getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 

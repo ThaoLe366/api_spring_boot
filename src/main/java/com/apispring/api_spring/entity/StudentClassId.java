@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class StudentClassId implements Serializable {
 
-    @Column(name = "student_id")
+    @Column(name = "StudentId")
     private String studentId;
 
     @Column(name = "class_id")

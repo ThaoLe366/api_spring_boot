@@ -21,13 +21,13 @@ public class ParentController {
     }
 
     @GetMapping("/parent/{id}")
-    public Parent getInfoParent(@PathVariable int id) {
+    public Parent getInfoParent(@PathVariable String id) {
 
         return parentService.getParentById(id);
     }
 
     @GetMapping("/parent/student/{id}")
-    public Parent getParentByChildrenId(@PathVariable int id) {
+    public Parent getParentByChildrenId(@PathVariable String id) {
 
         return parentService.getParentByChildrenID(id);
     }

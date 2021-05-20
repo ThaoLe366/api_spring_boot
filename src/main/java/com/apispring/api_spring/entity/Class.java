@@ -10,11 +10,14 @@ import java.util.Date;
 @Table(name = "class")
 public class Class {
 
+    public void setClassId(@NonNull String classId) {
+        this.classId = classId;
+    }
+
     @Id
-    @GeneratedValue
     @NonNull
     @Column(name = "class_id")
-    private int classId;
+    private String classId;
 
     //@Column (name = "subject_id") // foreign key
     //private int subjectId;
@@ -67,7 +70,7 @@ public class Class {
         this.announcement = announcement;
     }
 
-    public int getClassId() {
+    public String getClassId() {
         return classId;
     }
 

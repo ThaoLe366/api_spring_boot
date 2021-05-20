@@ -12,6 +12,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 @RestController
@@ -53,6 +55,12 @@ public class WelcomeController {
         else if(role==2){ //Student
             Account account2=  userDetailService.createUser(account);
             Student newStudent= new Student();
+
+            //Create random id
+            //TODO: generate password spring
+            Date currentTime    = Calendar.getInstance().getTime();
+            String randomPasswordStudent=currentTime.toString();
+            newStudent.setStudentId(randomPasswordStudent);
             newStudent.setAccount(account2);
             studentService.createStudent(newStudent);
 
@@ -61,10 +69,14 @@ public class WelcomeController {
             //Create Parent account
             Random r = new Random();
             String passwordDefault=String.valueOf(r.nextInt(12000-10000)+10000);
+
+            String randomPasswordParent= (Calendar.getInstance().getTime()).toString();
+
             Account accountParent= new Account(emailDefault, passwordDefault);
             userDetailService.createUser(accountParent);
 
             Parent parent= new Parent();
+            parent.setParentId(randomPasswordParent);
             parent.setStudent(newStudent);
 
             parent.setAccount(accountParent);
