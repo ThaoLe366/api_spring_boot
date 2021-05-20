@@ -16,7 +16,7 @@ public class Student {
 
     @Id
     @NonNull
-    @Column (name = "student_id")
+    @Column (name = "StudentId")
     private String studentId;
 
 
@@ -46,7 +46,8 @@ public class Student {
     private Collection<StudentClass> classes;
 
 
-
+    @OneToMany(mappedBy = "confirmationPaper")
+    private Collection<StudentConfirmationpaper> confirmationpapers;
 
     public Collection<StudentClass> getClasses() {
         return classes;

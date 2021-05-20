@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,14 +17,14 @@ import java.util.Date;
 @NoArgsConstructor
 public class StudentConfirmpaperId implements Serializable {
 
-    @Column(name = "student_id")
-    private String studentid;
+    @Column(name = "StudentId")
+    private String student;
 
-    @Column(name = "required_time")
+    @Column(name = "RequiredTime")
     private Date requiredTime;
 
-    @Column(name = "confirmationPaper_id")
-    private int confirmationPaperid;
+    @Column(name = "ConfirmationPaperId")
+    private int confirmationPaper;
 
 
 }

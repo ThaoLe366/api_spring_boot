@@ -62,9 +62,14 @@ public class ConfirmationpaperController {
         return service1.findAll();
     }
 
-    /*@GetMapping("/studentconfirmationpaper/{studentid}")
-    public List<StudentConfirmationpaper> findByStudentId(@PathVariable String studentid){
-        return service1.findByStudentId(studentid);
+    @GetMapping("/studentconfirmationpaper/{confirmationId}")
+    public List<StudentConfirmationpaper> findByConfirmationId(@PathVariable int confirmationId){
+        return service1.findByConfirmationpaperConfirmationpaperId(confirmationId);
     }
-*/
+
+    @GetMapping("/studentconfirmationpaper/findbystudentid/{studentId}")
+    public List<StudentConfirmationpaper> findByStudentId(@PathVariable String studentId){
+        return service1.findByStudentId(studentId);
+    }
+
 }
