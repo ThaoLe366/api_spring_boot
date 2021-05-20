@@ -22,11 +22,8 @@ public class MessageService {
         return messageRepository.findMessageBySenderAccountId(accountId);
     }
 
-    public List<Message> getMessageByTwoAccountId(int senderId, int receiverId){
-        return messageRepository.findMessageByTwoAccountId(senderId, receiverId);
-    }
+//    public List<Message> getMessageByTwoAccountId(int senderId, int receiverId){
+//        return messageRepository.findMessageByTwoAccountId(senderId, receiverId);
+//    }
 
-    public Message getMessageById(int id){
-        return messageRepository.findById(id).orElse(null);
-    }
 }

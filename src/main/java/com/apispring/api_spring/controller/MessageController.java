@@ -20,11 +20,11 @@ public class MessageController {
     }
 
 
-    @GetMapping("message/{id}")
-    public Message findById(@PathVariable String id){
-        int messageId = Integer.parseInt(id);
-        return messageService.getMessageById(messageId);
-    }
+//    @GetMapping("message/{id}")
+//    public Message findById(@PathVariable String id){
+//        int messageId = Integer.parseInt(id);
+//        return messageService.getMessageById(messageId);
+//    }
 
     @GetMapping("message/sender/{id}")
     public List<Message> getMessageBySenderAccountId(@PathVariable String id){
