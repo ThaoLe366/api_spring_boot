@@ -1,5 +1,7 @@
 package com.apispring.api_spring.respository;
 
+import com.apispring.api_spring.entity.ConfirmationPaper;
+import com.apispring.api_spring.entity.Student;
 import com.apispring.api_spring.entity.StudentConfirmationpaper;
 import com.apispring.api_spring.entity.StudentConfirmpaperId;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,8 +21,8 @@ public interface StudentConfirmationpaperRepository  extends JpaRepository<Stude
     int update(@Param("id") int id, @Param("name") String name);
 
 
-   // List<StudentConfirmationpaper> findBystudentIdIn(String studentId);
+    List<StudentConfirmationpaper> findByStudent(Student student);
 
-    List<StudentConfirmationpaper> findByConfirmationPaper (int confirmationPaper);
+    List<StudentConfirmationpaper> findByConfirmationPaper (ConfirmationPaper confirmationPaper);
 
 }
