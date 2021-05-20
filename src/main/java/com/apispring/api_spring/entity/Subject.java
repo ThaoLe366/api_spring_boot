@@ -1,5 +1,6 @@
 package com.apispring.api_spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ public class Subject {
     @Id
     @NonNull
     @Column(name = "SubjectId")
-    private int subjectId;
+    private String subjectId;
 
     @Column(name = "Name")
     private String name;
@@ -23,7 +24,8 @@ public class Subject {
     @Column(name = "Description")
     private String description;
 
-    @OneToMany(mappedBy = "subject")
+    @JsonIgnore
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "subject")
     private Collection<Class> classes;
 
     public Collection<Class> getClasses() {
@@ -34,11 +36,11 @@ public class Subject {
         this.classes = classes;
     }
 
-    public int getSubjectId() {
+    public String getSubjectId() {
         return subjectId;
     }
 
-    public void setSubjectId(int subjectId) {
+    public void setSubjectId(String subjectId) {
         this.subjectId = subjectId;
     }
 
@@ -66,14 +68,16 @@ public class Subject {
         this.description = description;
     }
 
-    public Subject(int subjectId, String name, int numberOfCredit, String description, Collection<Class> classes) {
+    public Subject(String  subjectId, String name, int numberOfCredit, String description, Collection<Class> classes) {
         this.subjectId = subjectId;
         this.name = name;
         this.numberOfCredit = numberOfCredit;
         this.description = description;
         this.classes = classes;
     }
-
+    public Subject(String subjectId){
+        this.subjectId=subjectId;
+    }
     public Subject() {
     }
 }
