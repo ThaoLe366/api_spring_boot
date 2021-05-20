@@ -15,10 +15,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class StudentClassId implements Serializable {
 
-    @Column(name = "StudentId")
+    @Column(name = "student_id")
     private String studentId;
 
     @Column(name = "class_id")
-    private int classId;
+    private String classId;
 }
 

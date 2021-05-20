@@ -70,6 +70,26 @@ public class Class {
     @OneToMany(mappedBy = "student")
     private Collection<StudentClass> students;
 
+    public void setClassId(@NonNull String classId) {
+        this.classId = classId;
+    }
+
+    public void setStartingDate(Date startingDate) {
+        this.startingDate = startingDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setDayOfWeek(int dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
+    }
+
+    public void setStartingSchoolTime(int startingSchoolTime) {
+        this.startingSchoolTime = startingSchoolTime;
+    }
+
     public Collection<Announcement> getAnnouncement() {
         return announcement;
     }
