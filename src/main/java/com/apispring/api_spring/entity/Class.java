@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -29,12 +30,13 @@ public class Class {
     @ManyToOne
     @JoinColumn(name = "subjectId")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @Getter(onMethod = @__( @JsonIgnore))
+    //@Getter(onMethod = @__( @JsonIgnore))
     @Setter
     private Subject subject;
 
     //@Column (name = "teacher_id") // foreign key
    // private int teacherId;
+
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
@@ -64,11 +66,21 @@ public class Class {
     @Column (name = "endSchoolTime")
     private int endSchoolTime;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "_class")
     private Collection<Announcement> announcement;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "student")
     private Collection<StudentClass> students;
+
+    public Collection<StudentClass> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Collection<StudentClass> students) {
+        this.students = students;
+    }
 
     public Collection<Announcement> getAnnouncement() {
         return announcement;

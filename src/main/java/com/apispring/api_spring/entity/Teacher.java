@@ -1,5 +1,7 @@
 package com.apispring.api_spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,9 +39,11 @@ public class Teacher {
 
     private int accountID;
 
-    @OneToMany(mappedBy = "sender")
-    private Collection<Announcement> announcements;
+   @JsonIgnore
+   @OneToMany(mappedBy = "sender")
+   private Collection<Announcement> announcements;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "teacher")
     private Collection<Class> classes;
 
