@@ -10,11 +10,11 @@ import java.util.List;
 
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 
-    @Query(value = "SELECT * FROM Message WHERE Message.senderAccount.accountId = :accountId", nativeQuery = true)
+    @Query(value = "SELECT m FROM Message m where m.messageId.senderAccountId = :accountId")
     List<Message> findMessageBySenderAccountId(@Param("accountId") int accountId);
 
 
-    @Query(value = "SELECT * FROM Message WHERE Message.senderAccount.accountId = :senderAccountId AND Message.receiverAccount.accountId =:receiverAccountId", nativeQuery = true)
-    List<Message> findMessageByTwoAccountId(@Param("senderAccountId") int senderAccountId, @Param("receiverAccountId") int receiverAccountId);
+//    @Query(value = "SELECT m FROM Message m WHERE Message.messageId.senderAccountId = :senderAccountId AND Message.messageId.receiverAccountId =:receiverAccountId")
+//    List<Message> findMessageByTwoAccountId(@Param("senderAccountId") int senderAccountId, @Param("receiverAccountId") int receiverAccountId);
 
 }
