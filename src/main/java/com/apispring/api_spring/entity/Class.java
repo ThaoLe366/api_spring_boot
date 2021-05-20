@@ -1,5 +1,10 @@
 package com.apispring.api_spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -22,7 +27,10 @@ public class Class {
     //@Column (name = "subject_id") // foreign key
     //private int subjectId;
     @ManyToOne
-    @JoinColumn(name = "subject_id")
+    @JoinColumn(name = "subjectId")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @Getter(onMethod = @__( @JsonIgnore))
+    @Setter
     private Subject subject;
 
     //@Column (name = "teacher_id") // foreign key
