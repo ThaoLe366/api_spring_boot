@@ -30,7 +30,7 @@ public class Class {
     @ManyToOne
     @JoinColumn(name = "subjectId")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @Getter(onMethod = @__( @JsonIgnore))
+    //@Getter(onMethod = @__( @JsonIgnore))
     @Setter
     private Subject subject;
 
