@@ -26,11 +26,16 @@ public class MessageController {
 //        return messageService.getMessageById(messageId);
 //    }
 
-    @GetMapping("message/sender/{id}")
+
+    @GetMapping("/message/sender/{id}")
     public List<Message> getMessageBySenderAccountId(@PathVariable String id){
         int accountId = Integer.parseInt(id);
         return messageService.getMessageBySenderAccountId(accountId);
     }
 
+    @GetMapping("/message")
+    public List<Message> findAll(){
+        return messageService.findAll();
+    }
 
 }
