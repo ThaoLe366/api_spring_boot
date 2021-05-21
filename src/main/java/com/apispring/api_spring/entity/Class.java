@@ -90,6 +90,10 @@ public class Class {
         this.announcement = announcement;
     }
 
+    public void setClassId(String classId){
+        this.classId= classId;
+    }
+
     public String getClassId() {
         return classId;
     }
@@ -189,5 +193,9 @@ public class Class {
         this.startingSchoolTime = temp.getStartSchoolTime();
         this.endSchoolTime = temp.getEndSchoolTime();
         this.classRoom = temp.getClassRoom();
+    }
+
+    public Class(@NonNull String classId) {
+        this.classId = classId;
     }
 }

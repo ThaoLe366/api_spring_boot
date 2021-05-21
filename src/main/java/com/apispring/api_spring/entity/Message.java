@@ -10,23 +10,7 @@ import java.util.Date;
 
 public class Message {
 
-//    @Id
-//    @GeneratedValue
-//    @NonNull
-//    @Column(name = "sent_Time")
-//    private Date sentTime;
 
-    // foreign key with table Account
-    //@Column (name = "sender_account_id")
-    //private int senderAccountId;
-
-    //@ManyToOne
-    //@JoinColumn(name = "account_id")
-    ///private int senderAccount;
-
-    // foreign key with table Account
-    //@Column (name = "receiver_account_id")
-   // private int receiverAccountId;
 
     @EmbeddedId
     private MessageId messageId;

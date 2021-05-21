@@ -9,10 +9,15 @@ import com.apispring.api_spring.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class StudentController {
     @Autowired
     private StudentService studentService;
+
+    @GetMapping("/student")
+    public List<Student> findAll (){ return  studentService.findAll();}
 
     @PostMapping("/student")
     public Student createStudent(@RequestBody Student student) {

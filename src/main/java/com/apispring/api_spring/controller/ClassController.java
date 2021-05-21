@@ -1,12 +1,16 @@
 package com.apispring.api_spring.controller;
 
+import com.apispring.api_spring.entity.*;
 import com.apispring.api_spring.entity.Class;
-import com.apispring.api_spring.entity.Subject;
-import com.apispring.api_spring.entity.Teacher;
 import com.apispring.api_spring.service.ClassService;
+import com.apispring.api_spring.service.StudentClassService;
+import com.apispring.api_spring.service.StudentService;
 import com.apispring.api_spring.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
+import java.util.List;
 
 @RestController
 public class ClassController {
@@ -16,11 +20,23 @@ public class ClassController {
     @Autowired
     TeacherService teacherService;
 
+    @Autowired
+    StudentService studentService ;
+
+    @Autowired
+    StudentClassService studentClassService;
+
     final  String  MainDomain="/class";
     @PostMapping(MainDomain)
     public Class createClass(@RequestBody Class mClass){
 
+        mClass.setClassId("Class"+mClass.getClassId());
         return classService.createClass(mClass);
+    }
+
+    @GetMapping(MainDomain+"/findall")
+    public List<Class> findAll (){
+        return  classService.findAll();
     }
 
     @GetMapping(MainDomain+"/{classId}")
@@ -56,6 +72,12 @@ public class ClassController {
         //subject.setTeacher(teacher);
         return classService.updateClass(mClass);
     }
+
+    @DeleteMapping("class/{classId}")
+    public void delete (@PathVariable String classId){
+        classService.delete(classId);
+    }
+
 
 
 }

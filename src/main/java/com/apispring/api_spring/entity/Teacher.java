@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -64,6 +65,7 @@ public class Teacher {
     }
 
     public String getTeacherID() {
+
         return teacherId;
     }
 
@@ -136,6 +138,10 @@ public class Teacher {
     }
 
     public Teacher() {
+    }
+
+    public Teacher(@NonNull String teacherId){
+        this.teacherId= teacherId;
     }
 
 }

@@ -7,6 +7,8 @@ import com.apispring.api_spring.respository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TeacherService {
 
@@ -50,7 +52,14 @@ public class TeacherService {
         oldAccount.setPassword(teacher.getAccount().getPassword());
         oldAccount.setUsername(teacher.getAccount().getUsername());
 
+
         oldTeacher.setAccount(oldAccount);
         return repository.save(oldTeacher);
     }
+
+    public void delete (String teacherId){
+        repository.deleteById(teacherId);
+    }
+
+    public List<Teacher> findAll (){ return repository.findAll();}
 }

@@ -18,7 +18,9 @@ public class SubjectController {
     final  String  MainDomain="/subject";
     @PostMapping(MainDomain)
     public Subject createSubject(@RequestBody Subject subject){
-       return subjectService.createSubject(subject);
+
+        subject.setSubjectId("Subject"+subject.getSubjectId());
+        return subjectService.createSubject(subject);
     }
 
     @GetMapping(MainDomain+"/{subjectId}")

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 
-public interface ClassRepository extends JpaRepository<Class,Integer> {
+public interface ClassRepository extends JpaRepository<Class,String> {
     @Query("select c from Class c where c.classId =?1")
     Class findByIdSubject(String id);
 

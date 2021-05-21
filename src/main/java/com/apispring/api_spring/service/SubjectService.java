@@ -5,6 +5,7 @@ import com.apispring.api_spring.respository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,6 +23,12 @@ public class SubjectService {
     }
     public Subject findSubjectById(String id){
         return repository.findByIdSubject(id);
+    }
+
+    public List<Subject> findAll(){return  repository.findAll();}
+
+    private void delete (String teacherId){
+        repository.deleteById(teacherId);
     }
 
 }
