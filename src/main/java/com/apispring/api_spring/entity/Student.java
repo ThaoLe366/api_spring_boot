@@ -1,5 +1,6 @@
 package com.apispring.api_spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -42,9 +43,9 @@ public class Student {
     @OneToOne
     private Account account;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "_class")
     private Collection<StudentClass> classes;
-
 
     @OneToMany(mappedBy = "confirmationPaper")
     private Collection<StudentConfirmationpaper> confirmationpapers;

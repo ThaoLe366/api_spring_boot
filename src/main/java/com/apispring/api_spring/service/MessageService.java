@@ -26,4 +26,8 @@ public class MessageService {
 //        return messageRepository.findMessageByTwoAccountId(senderId, receiverId);
 //    }
 
+    public List<Message> findAll(){
+        return messageRepository.findAll();
+    }
+
 }

@@ -9,16 +9,15 @@ import java.sql.Time;
 @Table(name = "school_time")
 public class SchoolTime {
     @Id
-    @GeneratedValue
     @NonNull
     @Column(name = "schooltime_order")
     private int schoolTimeOrder;
 
     @Column (name = "starting_time")
-    private Time startingTime;
+    private String startingTime;
 
     @Column (name = "end_time")
-    private Time endTime;
+    private String endTime;
 
     public int getSchoolTimeOrder() {
         return schoolTimeOrder;
@@ -28,19 +27,19 @@ public class SchoolTime {
         this.schoolTimeOrder = schoolTimeOrder;
     }
 
-    public Time getStartingTime() {
+    public String getStartingTime() {
         return startingTime;
     }
 
-    public void setStartingTime(Time startingTime) {
+    public void setStartingTime(String startingTime) {
         this.startingTime = startingTime;
     }
 
-    public Time getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
