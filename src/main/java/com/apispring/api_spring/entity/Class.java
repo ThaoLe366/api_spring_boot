@@ -79,6 +79,7 @@ public class Class {
     public void setStudents(Collection<StudentClass> students) {
         this.students = students;
 
+
     }
 
     public Collection<Announcement> getAnnouncement() {
