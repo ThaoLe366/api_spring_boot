@@ -74,12 +74,14 @@ public class Class {
     @OneToMany(mappedBy = "student")
     private Collection<StudentClass> students;
 
+
     public Collection<StudentClass> getStudents() {
         return students;
     }
 
     public void setStudents(Collection<StudentClass> students) {
         this.students = students;
+
     }
 
     public Collection<Announcement> getAnnouncement() {
