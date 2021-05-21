@@ -26,40 +26,14 @@ public class StudentController {
 
     @PutMapping("/student/updateInfo")
     public Student updateInfo(@RequestBody Student student) {
-        Student oldStudent = studentService.getStudentById(student.getStudentId());
 
-
-        //Update profile
-        oldStudent.setStudentPhone(student.getStudentPhone());
-        oldStudent.setStudentAddress(student.getStudentAddress());
-
-        //For update paddword
-        Account oldAccount = oldStudent.getAccount();
-        oldAccount.setPassword(student.getAccount().getPassword());
-        oldStudent.setAccount(oldAccount);
-        return studentService.updateInfo(oldStudent);
+        return studentService.updateInfo(student);
 
     }
 
     @PutMapping("/student/default")
     public Student updateDefault(@RequestBody Student student) {
-        Student oldStudent = studentService.getStudentById(student.getStudentId());
-
-
-        //Update profile
-        oldStudent.setStudentPhone(student.getStudentPhone());
-        oldStudent.setStudentAddress(student.getStudentAddress());
-
-        oldStudent.setStudentEmail(student.getStudentEmail());
-        oldStudent.setClasses(student.getClasses());
-        oldStudent.setStudentImage(student.getStudentImage());
-        oldStudent.setStudentName(student.getStudentName());
-        oldStudent.setStudentBirthday(student.getStudentBirthday());
-        //For update paddword
-        Account oldAccount = oldStudent.getAccount();
-        oldAccount.setPassword(student.getAccount().getPassword());
-        oldStudent.setAccount(oldAccount);
-        return studentService.updateInfo(oldStudent);
+        return studentService.updateInfo(student);
 
     }
 }

@@ -17,31 +17,39 @@ import java.util.UUID;
 public class Teacher {
 
     @Id
-    @GeneratedValue
     @Column(name = "teacher_id")
-    private int teacherId;
+    private String teacherId;
 
-    private String name=null;
+    private String name = null;
 
-    private Date birthday=null;
+    private Date birthday = null;
 
-    private String degree=null;
+    private String degree = null;
 
-    private String phone=null;
+    private String phone = null;
 
-    private String gender=null;
+    private String gender = null;
 
-    private String address=null;
+    private String address = null;
 
-    private String email=null;
+    private String email = null;
 
-    private String image=null;
+    private String image = null;
 
-    private int accountID;
+    @OneToOne
+    private Account account;
 
-   @JsonIgnore
-   @OneToMany(mappedBy = "sender")
-   private Collection<Announcement> announcements;
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "sender")
+    private Collection<Announcement> announcements;
 
     @JsonIgnore
     @OneToMany(mappedBy = "teacher")
@@ -55,11 +63,11 @@ public class Teacher {
         this.announcements = announcements;
     }
 
-    public int getTeacherID() {
+    public String getTeacherID() {
         return teacherId;
     }
 
-    public void setTeacherID(int teacherId) {
+    public void setTeacherID(String teacherId) {
         this.teacherId = teacherId;
     }
 
@@ -125,14 +133,6 @@ public class Teacher {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public int getAccountID() {
-        return accountID;
-    }
-
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
     }
 
     public Teacher() {

@@ -48,7 +48,8 @@ public class WelcomeController {
         if(role==1){ //Teacher
             Account account1=  userDetailService.createUser(account);
             Teacher newTeacher= new Teacher();
-            newTeacher.setAccountID(account1.getAccountId());
+            newTeacher.setTeacherID(Calendar.getInstance().getTime().toString());
+            newTeacher.setAccount(account1);
             teacherService.createTeacher(newTeacher);
             return account1;
         }
@@ -88,7 +89,7 @@ public class WelcomeController {
     }
 
     @PostMapping("/login")
-    public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+    public AuthenticatonToken generateToken(@RequestBody AuthRequest authRequest) throws Exception {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUserName(),
@@ -99,6 +100,8 @@ public class WelcomeController {
             throw new Exception(ex.toString());
 
         }
-        return jwtUtil.generateToken(authRequest.getUserName());
+        String token=jwtUtil.generateToken(authRequest.getUserName());
+        AuthenticatonToken authenticatonToken= new AuthenticatonToken(token);
+        return authenticatonToken;
     }
 }

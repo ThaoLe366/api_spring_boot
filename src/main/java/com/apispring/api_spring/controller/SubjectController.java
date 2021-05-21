@@ -33,7 +33,7 @@ public class SubjectController {
         oldSubject.setDescription(subject.getDescription());
         oldSubject.setName(subject.getName());
         oldSubject.setNumberOfCredit(subject.getNumberOfCredit());
-        return subjectService.updateSubject(oldSubject);
+        return subjectService.updateSubject(subject);
     }
     @PutMapping(MainDomain+"/{subjectId}/classId/{classId}")
     Class assignSubjectToClass(

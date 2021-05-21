@@ -22,7 +22,6 @@ public class ParentController {
 
     @GetMapping("/parent/{id}")
     public Parent getInfoParent(@PathVariable String id) {
-
         return parentService.getParentById(id);
     }
 
@@ -35,40 +34,11 @@ public class ParentController {
 
     @PutMapping("/parent/updateInfo")
     public Parent updateInfo(@RequestBody Parent parent) {
-
-        Parent oldParent = parentService.getParentById(parent.getParentId());
-
-        //Update profile
-        oldParent.setParentPhone(parent.getParentPhone());
-        oldParent.setParentAddress(parent.getParentAddress());
-
-        //For update password
-        Account oldAccount = oldParent.getAccount();
-        oldAccount.setPassword(parent.getAccount().getPassword());
-        oldParent.setAccount(oldAccount);
-        return parentService.updateInfo(oldParent);
-
+        return parentService.updateInfo(parent);
     }
 
     @PutMapping("/parent/default")
     public Parent updateDefault(@RequestBody Parent parent) {
-        Parent oldParent = parentService.getParentById(parent.getParentId());
-
-        //Update profile
-        oldParent.setParentPhone(parent.getParentPhone());
-        oldParent.setParentAddress(parent.getParentAddress());
-        oldParent.setParentEmail(parent.getParentEmail());
-        oldParent.setParentImage(parent.getParentImage());
-        oldParent.setParentName(parent.getParentName());
-        oldParent.setParentBirthday(parent.getParentBirthday());
-        oldParent.setStudent(parent.getStudent());
-        //For update password
-        Account oldAccount = oldParent.getAccount();
-        //Base on way add data
-        oldAccount.setPassword(parent.getAccount().getPassword());
-        oldParent.setAccount(oldAccount);
-
-        return parentService.updateInfo(oldParent);
-
+        return parentService.updateDefault(parent);
     }
 }

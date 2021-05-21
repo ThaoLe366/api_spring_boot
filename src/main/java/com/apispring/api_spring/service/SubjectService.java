@@ -17,9 +17,11 @@ public class SubjectService {
     }
 
     public Subject updateSubject(Subject subject){
+
         return repository.save(subject);
     }
     public Subject findSubjectById(String id){
         return repository.findByIdSubject(id);
     }
+
 }
