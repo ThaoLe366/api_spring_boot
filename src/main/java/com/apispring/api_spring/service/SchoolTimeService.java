@@ -2,6 +2,7 @@ package com.apispring.api_spring.service;
 
 import com.apispring.api_spring.entity.SchoolTime;
 import com.apispring.api_spring.respository.SchoolTimeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Service
 public class SchoolTimeService {
 
+    @Autowired
     private SchoolTimeRepository repository;
 
     public List<SchoolTime> findAll(){
@@ -17,7 +19,7 @@ public class SchoolTimeService {
     }
 
     public SchoolTime findById(int id){
-        return repository.findById(id).orElse(null);
+        return repository.findBySchoolTimeOrder(id);
     }
 
     @Transactional
@@ -25,8 +27,16 @@ public class SchoolTimeService {
         repository.deleteById(id);
     }
 
-    public  SchoolTime createNew(SchoolTime schoolTime){
+    public  SchoolTime create(SchoolTime schoolTime){
         return  repository.save(schoolTime);
+    }
+
+    public String getTimeStart(int id){
+       return repository.getStartingTime(id);
+    }
+
+    public String getEndTime(int id){
+        return repository.getEndTime(id);
     }
 
 
