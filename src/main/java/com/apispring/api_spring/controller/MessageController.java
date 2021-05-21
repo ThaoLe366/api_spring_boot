@@ -28,9 +28,9 @@ public class MessageController {
 
 
     @GetMapping("/message/sender/{id}")
-    public List<Message> getMessageBySenderAccountId(@PathVariable String id){
-        int accountId = Integer.parseInt(id);
-        return messageService.getMessageBySenderAccountId(accountId);
+    public List<Message> getMessageBySenderAccountId(@PathVariable int id){
+
+        return messageService.getMessageBySenderAccountId(id);
     }
 
     @GetMapping("/message")

@@ -1,5 +1,6 @@
 package com.apispring.api_spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,10 +27,11 @@ public class Account {
     @Column (name = "password")
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "senderAccount")
     private Collection<Message> messageCollectionSend;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "receiverAccount")
     private Collection<Message> messageCollectionReceive;
 
