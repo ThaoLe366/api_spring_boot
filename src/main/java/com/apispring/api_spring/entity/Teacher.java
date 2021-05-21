@@ -64,11 +64,8 @@ public class Teacher {
         this.announcements = announcements;
     }
 
-<<<<<<< HEAD
     public String getTeacherID() {
-=======
-    public String  getTeacherID() {
->>>>>>> 316843c...  add mapper class
+
         return teacherId;
     }
 

@@ -48,6 +48,7 @@ public class AnnouncementService {
         return announcementRepository.findAnnouncementsBySender(teacher);
     }
 
+
     public void deleteById(int id){
         announcementRepository.deleteById(id);
     }
@@ -56,5 +57,7 @@ public class AnnouncementService {
         Class _class= classRepository.findById(classId).orElse(null);
         return announcementRepository.findAnnouncementBy_class(_class);
     }
+
+
 
 }

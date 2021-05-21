@@ -9,10 +9,18 @@ import com.apispring.api_spring.respository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ParentService {
     @Autowired
     private ParentRepository repository;
+
+    public List<Parent> findAll(){return  repository.findAll();}
+
+    public void delete (String parentId){
+        repository.deleteById(parentId);
+    }
 
     public Parent createParent(Parent newParent) {
 
@@ -21,7 +29,7 @@ public class ParentService {
 
     public Parent getParentById(String idParent) {
 
-        return repository.findById(idParent);
+        return repository.findById(idParent).orElse(null);
     }
 
     public Parent updateInfo(@org.jetbrains.annotations.NotNull Parent parent){

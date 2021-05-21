@@ -5,12 +5,19 @@ import com.apispring.api_spring.entity.Student;
 import com.apispring.api_spring.respository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class StudentService {
     @Autowired
     private StudentRepository repository;
+
+    public List<Student> findAll(){ return repository.findAll();}
+
+    public void delete (String studentId){repository.deleteById(studentId);}
+
     public Student createStudent(Student newStudent) {
 
         return repository.save(newStudent);

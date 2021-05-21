@@ -48,9 +48,9 @@ public class WelcomeController {
         if(role==1){ //Teacher
             Account account1=  userDetailService.createUser(account);
             Teacher newTeacher= new Teacher();
-            newTeacher.setTeacherID(Calendar.getInstance().getTime().toString());
-            newTeacher.setAccount(account1);
 
+            newTeacher.setAccount(account1);
+            newTeacher.setTeacherID("Teacher" +String.valueOf(account1.getAccountId()));
             teacherService.createTeacher(newTeacher);
             return account1;
         }
@@ -60,14 +60,12 @@ public class WelcomeController {
 
             //Create random id
             //TODO: generate password spring
-            Date currentTime    = Calendar.getInstance().getTime();
-            String randomPasswordStudent=currentTime.toString();
-            newStudent.setStudentId(randomPasswordStudent);
+            newStudent.setStudentId("Student"+ String.valueOf(account2.getAccountId()));
             newStudent.setAccount(account2);
             studentService.createStudent(newStudent);
 
 
-            String emailDefault= "parent_" +account.getUsername();
+            String emailDefault= "Parent" +account.getUsername();
             //Create Parent account
             Random r = new Random();
             String passwordDefault=String.valueOf(r.nextInt(12000-10000)+10000);

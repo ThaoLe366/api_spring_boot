@@ -1,8 +1,13 @@
 package com.apispring.api_spring.controller;
 
 import com.apispring.api_spring.entity.Class;
+import com.apispring.api_spring.entity.Student;
 import com.apispring.api_spring.entity.StudentClass;
+import com.apispring.api_spring.entity.StudentClassId;
+import com.apispring.api_spring.service.ClassService;
 import com.apispring.api_spring.service.StudentClassService;
+import com.apispring.api_spring.service.StudentService;
+import com.apispring.api_spring.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +18,10 @@ import java.util.List;
 public class StudentClassController {
 
     final String MAPPING = "/student_class";
+    @Autowired
+    ClassService classService;
+    @Autowired
+    StudentService studentService ;
 
     @Autowired
     private StudentClassService studentClassService;
@@ -77,5 +86,21 @@ public class StudentClassController {
         studentClassService.deleteByIdClass(id_class);
     }
 
+    @PutMapping("class/addstudent/{classId}/{studentId}")
+    public StudentClass addStudentToClass (@PathVariable String studentId ,@PathVariable String classId){
+        Class mclass= classService.findClassId(classId);
+        Student student = studentService.getStudentById(studentId);
+
+
+        StudentClass studentClass = new StudentClass();
+        studentClass.set_class(mclass);
+        studentClass.setStudent(student);
+        StudentClassId id = new StudentClassId();
+        id.setClassId(classId);
+        id.setStudentId(studentId);
+        studentClass.setStudentClassId(id);
+        return studentClassService.save(studentClass);
+
+    }
 
 }

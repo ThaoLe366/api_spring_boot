@@ -90,6 +90,10 @@ public class Class {
         this.announcement = announcement;
     }
 
+    public void setClassId(String classId){
+        this.classId= classId;
+    }
+
     public String getClassId() {
         return classId;
     }
