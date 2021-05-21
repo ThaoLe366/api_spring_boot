@@ -16,9 +16,6 @@ import java.util.Date;
 @Table(name = "class")
 public class Class {
 
-    public void setClassId(@NonNull String classId) {
-        this.classId = classId;
-    }
 
     @Id
     @NonNull
