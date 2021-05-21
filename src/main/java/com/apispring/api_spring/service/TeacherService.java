@@ -19,6 +19,7 @@ public class TeacherService {
     }
 
     public Teacher getTeacherById(String idTeacher) {
+<<<<<<< HEAD
 
         return repository.findByIdTeacher(idTeacher);
     }
@@ -49,6 +50,8 @@ public class TeacherService {
         Account oldAccount= oldTeacher.getAccount();
         oldAccount.setPassword(teacher.getAccount().getPassword());
         oldAccount.setUsername(teacher.getAccount().getUsername());
+=======
+>>>>>>> 316843c...  add mapper class
 
         oldTeacher.setAccount(oldAccount);
         return repository.save(oldTeacher);

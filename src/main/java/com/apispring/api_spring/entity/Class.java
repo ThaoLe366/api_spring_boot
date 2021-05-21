@@ -190,4 +190,8 @@ public class Class {
         this.endSchoolTime = temp.getEndSchoolTime();
         this.classRoom = temp.getClassRoom();
     }
+
+    public Class(@NonNull String classId) {
+        this.classId = classId;
+    }
 }

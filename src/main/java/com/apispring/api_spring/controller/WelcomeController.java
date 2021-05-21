@@ -50,6 +50,7 @@ public class WelcomeController {
             Teacher newTeacher= new Teacher();
             newTeacher.setTeacherID(Calendar.getInstance().getTime().toString());
             newTeacher.setAccount(account1);
+
             teacherService.createTeacher(newTeacher);
             return account1;
         }
