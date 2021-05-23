@@ -43,39 +43,38 @@ public class WelcomeController {
     }
 
     @PostMapping("/register/{role}")
-    public Account register(@RequestBody Account account,@PathVariable int role ) {
+    public Account register(@RequestBody Account account, @PathVariable int role) {
 
-        if(role==1){ //Teacher
-            Account account1=  userDetailService.createUser(account);
-            Teacher newTeacher= new Teacher();
+        if (role == 1) { //Teacher
+            Account account1 = userDetailService.createUser(account);
+            Teacher newTeacher = new Teacher();
 
             newTeacher.setAccount(account1);
-            newTeacher.setTeacherID("Teacher" +String.valueOf(account1.getAccountId()));
+            newTeacher.setTeacherID("Teacher" + String.valueOf(account1.getAccountId()));
             teacherService.createTeacher(newTeacher);
             return account1;
-        }
-        else if(role==2){ //Student
-            Account account2=  userDetailService.createUser(account);
-            Student newStudent= new Student();
+        } else if (role == 2) { //Student
+            Account account2 = userDetailService.createUser(account);
+            Student newStudent = new Student();
 
             //Create random id
             //TODO: generate password spring
-            newStudent.setStudentId("Student"+ String.valueOf(account2.getAccountId()));
+            newStudent.setStudentId("Student" + String.valueOf(account2.getAccountId()));
             newStudent.setAccount(account2);
             studentService.createStudent(newStudent);
 
 
-            String emailDefault= "Parent" +account.getUsername();
+            String emailDefault = "Parent" + account.getUsername();
             //Create Parent account
             Random r = new Random();
-            String passwordDefault=String.valueOf(r.nextInt(12000-10000)+10000);
+            String passwordDefault = String.valueOf(r.nextInt(12000 - 10000) + 10000);
 
-            String randomPasswordParent= (Calendar.getInstance().getTime()).toString();
+            String randomPasswordParent = (Calendar.getInstance().getTime()).toString();
 
-            Account accountParent= new Account(emailDefault, passwordDefault);
+            Account accountParent = new Account(emailDefault, passwordDefault);
             userDetailService.createUser(accountParent);
 
-            Parent parent= new Parent();
+            Parent parent = new Parent();
             parent.setParentId(randomPasswordParent);
             parent.setStudent(newStudent);
 
@@ -84,11 +83,11 @@ public class WelcomeController {
             return account2;
         }
         return null;
-       // return "Form Teacher not successful";
+        // return "Form Teacher not successful";
     }
 
-    @PostMapping("/login")
-    public AuthenticatonToken generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+    @PostMapping("/login/{role}")
+    public AuthenticatonToken generateToken(@RequestBody AuthRequest authRequest, @PathVariable int role) throws Exception {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUserName(),
@@ -99,8 +98,27 @@ public class WelcomeController {
             throw new Exception(ex.toString());
 
         }
-        String token=jwtUtil.generateToken(authRequest.getUserName());
-        AuthenticatonToken authenticatonToken= new AuthenticatonToken(token);
-        return authenticatonToken;
+
+        if (role == 1)        //Teacher
+        {
+            Teacher teacher = new Teacher();
+            teacher = userDetailService.findTeacherByUserName(authRequest.getUserName());
+            String token = jwtUtil.generateToken(teacher);
+            AuthenticatonToken authenticatonToken = new AuthenticatonToken(token);
+            return authenticatonToken;
+        } else if (role == 2)  //Student
+        {
+                Student student= userDetailService.findStudentByUserName(authRequest.getUserName());
+                String token= jwtUtil.generateToken(student);
+                AuthenticatonToken authenticatonToken= new AuthenticatonToken(token);
+                return authenticatonToken;
+
+        } else {            //Parent
+            Parent parent= userDetailService.findParentByUserName(authRequest.getUserName());
+            String token= jwtUtil.generateToken(parent);
+            AuthenticatonToken authenticatonToken= new AuthenticatonToken(token);
+            return authenticatonToken;
+        }
+
     }
 }
