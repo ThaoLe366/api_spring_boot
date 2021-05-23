@@ -2,10 +2,7 @@ package com.apispring.api_spring.controller;
 
 import com.apispring.api_spring.entity.*;
 import com.apispring.api_spring.entity.Class;
-import com.apispring.api_spring.service.ClassService;
-import com.apispring.api_spring.service.StudentClassService;
-import com.apispring.api_spring.service.StudentService;
-import com.apispring.api_spring.service.TeacherService;
+import com.apispring.api_spring.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +22,9 @@ public class ClassController {
 
     @Autowired
     StudentClassService studentClassService;
+
+    @Autowired
+    SubjectService subjectService;
 
     final  String  MainDomain="/class";
     @PostMapping(MainDomain)

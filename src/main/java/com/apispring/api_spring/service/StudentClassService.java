@@ -59,4 +59,8 @@ public class StudentClassService {
         return studentClassRepository.findStudentClassByIdClass(classId);
     }
 
+    public List<StudentClass> findAll(){
+        return studentClassRepository.findAll();
+    }
+
 }

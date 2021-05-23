@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {
@@ -51,5 +52,9 @@ public class CustomUserDetailService implements UserDetailsService {
         existAccount.setPassword(account.getPassword());
         existAccount.setUsername(account.getUsername());
         return repository.save(existAccount);
+    }
+
+    public List<Account> findAll(){
+        return repository.findAll();
     }
 }

@@ -1,6 +1,8 @@
 package com.apispring.api_spring.respository;
 
 import com.apispring.api_spring.entity.SchoolTime;
+import com.apispring.api_spring.entity.Subject;
+import com.apispring.api_spring.entity.Teacher;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -26,4 +28,5 @@ public interface SchoolTimeRepository extends JpaRepository <SchoolTime, Integer
     @Modifying
     @Query(value = "delete from SchoolTime s where s.schoolTimeOrder = :id")
     void deleteById(@Param("id") int id);
+
 }
