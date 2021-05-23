@@ -81,7 +81,5 @@ public class CustomUserDetailService implements UserDetailsService {
         return repository.save(existAccount);
     }
 
-    public List<Account> findAll(){
-        return repository.findAll();
-    }
+
 }

@@ -22,7 +22,6 @@ public class SubjectController {
     @PostMapping(MainDomain)
     public Subject createSubject(@RequestBody Subject subject){
 
-        subject.setSubjectId("Subject"+subject.getSubjectId());
         return subjectService.createSubject(subject);
     }
 
