@@ -1,6 +1,7 @@
 package com.apispring.api_spring.controller;
 
 import com.apispring.api_spring.entity.Message;
+import com.apispring.api_spring.entity.Student;
 import com.apispring.api_spring.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,4 +39,14 @@ public class MessageController {
         return messageService.findAll();
     }
 
+
+    @GetMapping("message/{id_class}/class/{name}")
+    public List<Student> getAllStudentInClassBySimilarName(@PathVariable String id_class, @PathVariable String name){
+        return messageService.getAllStudentInClassBySimilarName(id_class, name);
+    }
+
+    @GetMapping("message/{id_teacher}/teacher/{name}")
+    public List<Student> getAllStudentOfTeacherWithSimilarName(@PathVariable String id_teacher, @PathVariable String name){
+        return messageService.getAllStudentOfTeacherWithSimilarName(id_teacher, name);
+    }
 }
