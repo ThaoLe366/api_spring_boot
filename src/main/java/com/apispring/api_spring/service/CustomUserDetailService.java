@@ -80,4 +80,8 @@ public class CustomUserDetailService implements UserDetailsService {
         existAccount.setUsername(account.getUsername());
         return repository.save(existAccount);
     }
+
+    public List<Account> findAll(){
+        return repository.findAll();
+    }
 }

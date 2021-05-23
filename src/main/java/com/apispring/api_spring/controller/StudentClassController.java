@@ -26,9 +26,16 @@ public class StudentClassController {
     @Autowired
     private StudentClassService studentClassService;
 
+
     @PostMapping(MAPPING)
     public StudentClass create(@RequestBody StudentClass studentClass){
+        studentClass.setRating(0); // rating == 0 => statusRate = not yet
         return studentClassService.save(studentClass);
+    }
+
+    @GetMapping(MAPPING)
+    public List<StudentClass> findAll(){
+        return studentClassService.findAll();
     }
 
     @PutMapping(MAPPING + "/student/{id_student}/class/{id_class}")
@@ -84,6 +91,11 @@ public class StudentClassController {
     @DeleteMapping (MAPPING + "/class/{id_class}")
     public void deleteAllByIdClass(@PathVariable String id_class){
         studentClassService.deleteByIdClass(id_class);
+    }
+
+    @DeleteMapping (MAPPING + "/{id_student}/{id_class}")
+    public void deleteByIdStudentClass(@PathVariable String id_student, String id_class){
+        studentClassService.deleteByIdStudentClass(id_student, id_class);
     }
 
     @PutMapping("class/addstudent/{classId}/{studentId}")

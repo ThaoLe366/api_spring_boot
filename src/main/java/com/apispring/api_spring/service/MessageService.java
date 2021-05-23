@@ -1,6 +1,7 @@
 package com.apispring.api_spring.service;
 
 import com.apispring.api_spring.entity.Message;
+import com.apispring.api_spring.entity.Student;
 import com.apispring.api_spring.respository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,6 +29,14 @@ public class MessageService {
 
     public List<Message> findAll(){
         return messageRepository.findAll();
+    }
+
+    public List<Student> getAllStudentOfTeacherWithSimilarName(String teacherId, String name){
+        return messageRepository.getAllStudentOfTeacherWithSimilarName(teacherId, name);
+    }
+
+    public List<Student> getAllStudentInClassBySimilarName(String classId, String name){
+        return messageRepository.getAllStudentInClassBySimilarName(classId, name);
     }
 
 }
