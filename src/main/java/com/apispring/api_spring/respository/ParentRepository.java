@@ -12,4 +12,6 @@ public interface ParentRepository  extends JpaRepository<Parent, String> {
 
     @Query("select p from Parent p where p.parentId =?1")
     Optional<Parent> findById(String idParent);
+
+    Parent findParentByAccount_Username(String userName);
 }

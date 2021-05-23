@@ -8,4 +8,6 @@ public interface SubjectRepository extends JpaRepository<Subject, String> {
 
     @Query("select s from Subject s where s.subjectId =?1")
     Subject findByIdSubject(String id);
+
+
 }
