@@ -16,7 +16,15 @@ public class SubjectService {
     SubjectRepository repository;
 
     public Subject createSubject(Subject subject){
-        subject.setSubjectId(subject.getName()+alphaNumericString(4));
+        String nameSubject = subject.getName();
+        String[] nameparts = nameSubject.split(" ");
+        
+        String IDSubject="";
+        for(int i= 0; i<nameparts.length; i++){
+            IDSubject=new String(IDSubject) +Character.toUpperCase(nameparts[i].charAt(0) );
+        }
+        IDSubject= IDSubject+ alphaNumericString(5);
+        subject.setSubjectId(IDSubject);
         return   repository.save(subject);
     }
 
