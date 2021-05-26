@@ -38,7 +38,7 @@ public class StudentController {
 
     @PutMapping("/student/default")
     public Student updateDefault(@RequestBody Student student) {
-        return studentService.updateInfo(student);
+        return studentService.updateDefault(student);
 
     }
 }
