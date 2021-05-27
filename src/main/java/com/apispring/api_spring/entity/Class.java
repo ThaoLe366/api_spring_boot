@@ -28,14 +28,11 @@ public class Class {
     @JoinColumn(name = "subjectId")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     //@Getter(onMethod = @__( @JsonIgnore))
-    @Setter
     private Subject subject;
-
-    //@Column (name = "teacher_id") // foreign key
-   // private int teacherId;
 
     @ManyToOne
     @JoinColumn(name = "teacher_id")
+  //  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Teacher teacher;
 
 
@@ -111,7 +108,7 @@ public class Class {
     }
 
     public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+        this.teacher= teacher;
     }
 
     public int getSemester() {
