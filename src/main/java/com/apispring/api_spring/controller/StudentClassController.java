@@ -114,5 +114,8 @@ public class StudentClassController {
         return studentClassService.save(studentClass);
 
     }
-
+    @GetMapping("class/student")
+    public List<Student> getStudentInClass(String classId){
+        return studentClassService.findStudentInClass(classId);
+    }
 }

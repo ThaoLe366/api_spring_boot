@@ -41,15 +41,9 @@ public class ParentService {
         oldParent.setParentPhone(parent.getParentPhone());
         oldParent.setParentAddress(parent.getParentAddress());
 
-        //For update password
-        Account oldAccount = oldParent.getAccount();
-        oldAccount.setPassword(parent.getAccount().getPassword());
-        oldParent.setAccount(oldAccount);
-
         return repository.save(oldParent);
-
-        //newStudent.setClasses();
     }
+
     public Parent updateDefault(Parent parent){
         Parent oldParent = this.getParentById(parent.getParentId());
 
@@ -70,5 +64,15 @@ public class ParentService {
     }
     public Parent getParentByChildrenID(String id){
         return repository.findParentByChildId(id);
+    }
+
+    public Parent updatePassword(Parent parent){
+        Parent oldParent = this.getParentById(parent.getParentId());
+        //For update password
+        Account oldAccount = oldParent.getAccount();
+        oldAccount.setPassword(parent.getAccount().getPassword());
+        oldParent.setAccount(oldAccount);
+
+        return repository.save(oldParent);
     }
 }

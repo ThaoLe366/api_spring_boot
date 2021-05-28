@@ -1,6 +1,7 @@
 package com.apispring.api_spring.service;
 
 import com.apispring.api_spring.entity.Class;
+import com.apispring.api_spring.entity.Student;
 import com.apispring.api_spring.entity.StudentClass;
 import com.apispring.api_spring.respository.StudentClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +63,7 @@ public class StudentClassService {
     public List<StudentClass> findAll(){
         return studentClassRepository.findAll();
     }
-
+    public List<Student> findStudentInClass(String classId){
+        return studentClassRepository.findStudentInClass(classId);
+    }
 }
