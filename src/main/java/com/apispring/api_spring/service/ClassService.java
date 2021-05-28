@@ -1,6 +1,7 @@
 package com.apispring.api_spring.service;
 
 import com.apispring.api_spring.entity.Class;
+import com.apispring.api_spring.entity.Student;
 import com.apispring.api_spring.entity.Subject;
 import com.apispring.api_spring.respository.ClassRepository;
 import com.apispring.api_spring.respository.SubjectRepository;
@@ -33,5 +34,6 @@ public class ClassService {
     public List<Class> findClassByTeacherId(String teacherId){
         return repository.findClassByTeacher_TeacherID(teacherId);
     }
+
 
 }

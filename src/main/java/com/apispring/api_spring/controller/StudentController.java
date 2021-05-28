@@ -29,16 +29,17 @@ public class StudentController {
         return studentService.getStudentById(id);
     }
 
-    @PutMapping("/student/updateInfo")
+    @PutMapping("/student/info")
     public Student updateInfo(@RequestBody Student student) {
-
         return studentService.updateInfo(student);
-
     }
 
     @PutMapping("/student/default")
     public Student updateDefault(@RequestBody Student student) {
         return studentService.updateDefault(student);
-
+    }
+    @PutMapping("/student/password")
+    public Student updatePassword(@RequestBody Student student) {
+        return studentService.updatePassword(student);
     }
 }

@@ -47,16 +47,17 @@ public class TeacherService {
         oldTeacher.setAddress(teacher.getAddress());
         oldTeacher.setPhone(teacher.getPhone());
 
-        //For update password
+        return repository.save(oldTeacher);
+    }
+    public  Teacher updatePassword(Teacher teacher){
+        Teacher oldTeacher = repository.findByIdTeacher(teacher.getTeacherID());
+
         Account oldAccount= oldTeacher.getAccount();
         oldAccount.setPassword(teacher.getAccount().getPassword());
-        oldAccount.setUsername(teacher.getAccount().getUsername());
-
 
         oldTeacher.setAccount(oldAccount);
         return repository.save(oldTeacher);
     }
-
     public void delete (String teacherId){
         repository.deleteById(teacherId);
     }

@@ -44,4 +44,9 @@ public class ParentController {
     public Parent updateDefault(@RequestBody Parent parent) {
         return parentService.updateDefault(parent);
     }
+
+    @PutMapping("/parent/password")
+    public Parent updatePassword  (@RequestBody Parent parent) {
+        return parentService.updateDefault(parent);
+    }
 }

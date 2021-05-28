@@ -31,7 +31,7 @@ public class TeacherController {
 
 
 
-    @PutMapping("/teacher/updateInfo")
+    @PutMapping("/teacher/info")
     public Teacher updateInfo(@RequestBody Teacher teacher) {
         return teacherService.updateInfo(teacher);
     }
@@ -46,5 +46,8 @@ public class TeacherController {
         teacherService.delete(teacherId);
     }
 
-
+    @PutMapping("/teacher/password")
+    public Teacher updatePassword(@RequestBody Teacher teacher) {
+        return teacherService.updatePassword(teacher);
+    }
 }
