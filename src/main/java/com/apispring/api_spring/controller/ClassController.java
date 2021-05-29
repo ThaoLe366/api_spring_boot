@@ -79,7 +79,7 @@ public class ClassController {
     }
 
     @GetMapping("class/teacher/{teacherId}")
-    public List<Class> getClassOfTeacher(String teacherId){
+    public List<Class> getClassOfTeacher(@PathVariable String teacherId){
       return   classService.findClassByTeacherId(teacherId);
     }
 
