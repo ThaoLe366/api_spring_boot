@@ -45,4 +45,9 @@ public class AnnouncementController {
         service.deleteById(id);
     }
 
+    @GetMapping("/announcement/studentId/{studentId}")
+    public List<Announcement> findByStudentId(@PathVariable String studentId){
+        return service.findByStudentId(studentId);
+    }
+
 }
