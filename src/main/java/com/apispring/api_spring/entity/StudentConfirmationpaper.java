@@ -17,18 +17,18 @@ public class StudentConfirmationpaper {
 
     @NonNull
     @Column(name = "RequiredTime" , insertable = false, updatable = false)
-    @JsonSetter("requiredTime")
+   // @JsonSetter("requiredTime")
     private Date requiredTime;
 
     @ManyToOne
     @MapsId("student")
-    @JsonSetter("student")//foreign key with table Student
+  //  @JsonSetter("student")//foreign key with table Student
     private Student student;
 
     //foreign key with table ConfirmationPaper
     @ManyToOne
     @MapsId("confirmationPaper")
-    @JsonSetter("confirmationPaper")
+   // @JsonSetter("confirmationPaper")
     private ConfirmationPaper confirmationPaper;
 
     @NonNull
