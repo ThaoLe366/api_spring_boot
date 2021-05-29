@@ -78,7 +78,7 @@ public class WelcomeController {
             Parent parent= new Parent();
             parent.setParentId(randomPasswordParent);
             parent.setStudent(newStudent);
-
+    
             parent.setAccount(accountParent);
             parentService.createParent(parent);
             return account2;
