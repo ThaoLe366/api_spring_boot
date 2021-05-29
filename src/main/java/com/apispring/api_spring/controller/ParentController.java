@@ -10,6 +10,8 @@ import com.apispring.api_spring.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ParentController {
     @Autowired
@@ -30,7 +32,8 @@ public class ParentController {
 
         return parentService.getParentByChildrenID(id);
     }
-
+    @GetMapping("/parent")
+    public List<Parent> findAdd(){ return parentService.findAll();}
 
     @PutMapping("/parent/updateInfo")
     public Parent updateInfo(@RequestBody Parent parent) {
@@ -39,6 +42,11 @@ public class ParentController {
 
     @PutMapping("/parent/default")
     public Parent updateDefault(@RequestBody Parent parent) {
+        return parentService.updateDefault(parent);
+    }
+
+    @PutMapping("/parent/password")
+    public Parent updatePassword  (@RequestBody Parent parent) {
         return parentService.updateDefault(parent);
     }
 }

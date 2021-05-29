@@ -1,6 +1,7 @@
 package com.apispring.api_spring.respository;
 
 import com.apispring.api_spring.entity.Class;
+import com.apispring.api_spring.entity.Student;
 import com.apispring.api_spring.entity.StudentClass;
 import com.apispring.api_spring.entity.StudentClassId;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -46,4 +47,13 @@ public interface StudentClassRepository extends JpaRepository<StudentClass, Stud
     @Query (value = "select s._class from StudentClass s where s.studentClassId.studentId = :studentId " +
             " and s._class.semester = :semester and s._class.studyingYear = :year")
     List<Class> getSchedule(@Param("studentId") String studentId, @Param("year") int year, @Param("semester") int semester);
+
+  //  @Query (value = "select s._class from StudentClass s where s.studentClassId.studentId = :studentId")
+    @Query(value = "select  s.student from StudentClass  s where  s._class.classId = (:classId)")
+    List<Student> findStudentInClass(@Param("classId") String classId);
+
+    @Query (value = "select s from StudentClass s where s.studentClassId.studentId = :studentId " +
+            " and s._class.semester = :semester and s._class.studyingYear = :year")
+    List<StudentClass> getStudentClassSchedule(@Param("studentId") String studentId, @Param("year") int year, @Param("semester") int semester);
+
 }

@@ -115,6 +115,13 @@ public class StudentClassController {
 
     }
 
+    @GetMapping("class/student")
+    public List<Student> getStudentInClass(String classId){
+        return studentClassService.findStudentInClass(classId);
+    }
 
-
+    @GetMapping(MAPPING + "/get/{id_student}/{year}/{semester}")
+    public List<StudentClass> getStudentClassSchedule(@PathVariable String id_student, @PathVariable int year, @PathVariable int semester){
+        return studentClassService.getStudentClassSchedule(id_student, year, semester);
+    }
 }

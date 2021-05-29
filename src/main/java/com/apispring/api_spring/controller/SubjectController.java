@@ -7,6 +7,9 @@ import com.apispring.api_spring.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @RestController
 public class SubjectController {
     @Autowired
@@ -19,7 +22,6 @@ public class SubjectController {
     @PostMapping(MainDomain)
     public Subject createSubject(@RequestBody Subject subject){
 
-        subject.setSubjectId("Subject"+subject.getSubjectId());
         return subjectService.createSubject(subject);
     }
 
@@ -48,6 +50,11 @@ public class SubjectController {
         mClass.setSubject(mSubject);
         //subject.setTeacher(teacher);
         return classService.updateClass(mClass);
+    }
+
+    @GetMapping(MainDomain)
+    public List<Subject> findAll(){
+        return  subjectService.findAll();
     }
 
 }

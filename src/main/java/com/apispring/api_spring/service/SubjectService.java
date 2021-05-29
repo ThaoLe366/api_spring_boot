@@ -8,13 +8,24 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static com.apispring.api_spring.util.GenerateID.alphaNumericString;
+
 @Service
 public class SubjectService {
     @Autowired
     SubjectRepository repository;
 
     public Subject createSubject(Subject subject){
-      return   repository.save(subject);
+        String nameSubject = subject.getName();
+        String[] nameparts = nameSubject.split(" ");
+        
+        String IDSubject="";
+        for(int i= 0; i<nameparts.length; i++){
+            IDSubject=new String(IDSubject) +Character.toUpperCase(nameparts[i].charAt(0) );
+        }
+        IDSubject= IDSubject+ alphaNumericString(5);
+        subject.setSubjectId(IDSubject);
+        return   repository.save(subject);
     }
 
     public Subject updateSubject(Subject subject){

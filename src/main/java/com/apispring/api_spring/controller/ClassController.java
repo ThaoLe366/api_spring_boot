@@ -30,7 +30,7 @@ public class ClassController {
     @PostMapping(MainDomain)
     public Class createClass(@RequestBody Class mClass){
 
-        mClass.setClassId("Class"+mClass.getClassId());
+
         return classService.createClass(mClass);
     }
 
@@ -76,6 +76,11 @@ public class ClassController {
     @DeleteMapping("class/{classId}")
     public void delete (@PathVariable String classId){
         classService.delete(classId);
+    }
+
+    @GetMapping("class/teacher/{teacherId}")
+    public List<Class> getClassOfTeacher(String teacherId){
+      return   classService.findClassByTeacherId(teacherId);
     }
 
 

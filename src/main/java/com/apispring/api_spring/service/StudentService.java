@@ -40,12 +40,18 @@ public class StudentService {
         oldStudent.setStudentPhone(student.getStudentPhone());
         oldStudent.setStudentAddress(student.getStudentAddress());
 
-        //For update paddword
-        Account oldAccount = oldStudent.getAccount();
-        oldAccount.setPassword(student.getAccount().getPassword());
-        oldStudent.setAccount(oldAccount);
         return repository.save(oldStudent);
 
+    }
+    public Student updatePassword(Student student){
+        Student oldStudent= this.getStudentById(student.getStudentId());
+
+        Account oldAccount= oldStudent.getAccount();
+        oldAccount.setPassword(student.getAccount().getPassword());
+
+        oldStudent.setAccount(oldAccount);
+
+        return repository.save(oldStudent);
     }
     public Student updateDefault(Student student){
         Student oldStudent = this.getStudentById(student.getStudentId());
