@@ -21,13 +21,13 @@ public class StudentConfirmationpaper {
     private Date requiredTime;
 
     @ManyToOne
-    @MapsId("student")
+    @MapsId("studentId")
   //  @JsonSetter("student")//foreign key with table Student
     private Student student;
 
     //foreign key with table ConfirmationPaper
     @ManyToOne
-    @MapsId("confirmationPaper")
+    @MapsId("confirmationPaperId")
    // @JsonSetter("confirmationPaper")
     private ConfirmationPaper confirmationPaper;
 
