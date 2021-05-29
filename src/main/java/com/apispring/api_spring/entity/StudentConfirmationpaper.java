@@ -10,21 +10,25 @@ import java.util.Date;
 @Table(name = "student_confirmationpaper")
 public class StudentConfirmationpaper {
 
+  
     @EmbeddedId
     private StudentConfirmpaperId studentConfirmpaperId;
 
 
     @NonNull
     @Column(name = "RequiredTime" , insertable = false, updatable = false)
+    @JsonSetter("requiredTime")
     private Date requiredTime;
 
     @ManyToOne
-    @MapsId("student")       //foreign key with table Student
+    @MapsId("student")
+    @JsonSetter("student")//foreign key with table Student
     private Student student;
 
     //foreign key with table ConfirmationPaper
     @ManyToOne
     @MapsId("confirmationPaper")
+    @JsonSetter("confirmationPaper")
     private ConfirmationPaper confirmationPaper;
 
     @NonNull
@@ -33,22 +37,17 @@ public class StudentConfirmationpaper {
     }
 
     public void setRequiredTime(@NonNull Date requiredTime) {
+        studentConfirmpaperId.setRequiredTime(requiredTime);
         this.requiredTime = requiredTime;
     }
 
-    public StudentConfirmpaperId getStudentConfirmpaperId() {
-        return studentConfirmpaperId;
-    }
-
-    public void setStudentConfirmpaperId(StudentConfirmpaperId studentConfirmpaperId) {
-        this.studentConfirmpaperId = studentConfirmpaperId;
-    }
 
     public Student getStudent() {
         return student;
     }
 
     public void setStudent(Student student) {
+        studentConfirmpaperId.setStudent(student.getStudentId());
         this.student = student;
     }
 
@@ -57,6 +56,7 @@ public class StudentConfirmationpaper {
     }
 
     public void setConfirmationPaper(ConfirmationPaper confirmationPaper) {
+        studentConfirmpaperId.setConfirmationPaper(confirmationPaper.getConfirmationPaperId());
         this.confirmationPaper = confirmationPaper;
     }
 
