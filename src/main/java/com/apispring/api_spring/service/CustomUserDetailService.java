@@ -73,13 +73,51 @@ public class CustomUserDetailService implements UserDetailsService {
     public List<Account> findAll (){
         return repository.findAll();
     }
-    public Account updateUser(Account account) {
-        Account existAccount = repository.findById(account.getAccountId()).orElse(null);
+    public Account updatePassword(int accountId, String password) {
 
-        existAccount.setPassword(account.getPassword());
-        existAccount.setUsername(account.getUsername());
+        Account existAccount = repository.findById(accountId).orElse(null);
+
+        existAccount.setPassword(password);
         return repository.save(existAccount);
     }
+    public int updateInfo(int accountId, String address, String phone ){
 
+        int role=-1;
+        if (teacherRepository.findTeacherByAccount_AccountId(accountId) != null){
+            role=1;
+            Teacher teacher= teacherRepository.findTeacherByAccount_AccountId(accountId);
+            teacher.setPhone(phone);
+            teacher.setAddress(address);
+
+        }
+        else if (studentRepository.findStudentByAccount_AccountId(accountId) != null){
+            role=2;
+            Student student= studentRepository.findStudentByAccount_AccountId(accountId);
+            student.setStudentPhone(phone);
+            student.setStudentAddress(address);
+        }
+        else if ((parentRepository.findParentByAccount_AccountId(accountId))!= null){
+            role=3;
+            Parent parent=parentRepository.findParentByAccount_AccountId(accountId);
+            parent.setParentAddress(address);
+            parent.setParentPhone(phone);
+
+        }
+        return role;
+    }
+    public int phoneAvailable( String phone ){
+
+        int role=-1;
+        if (teacherRepository.findTeacherByPhone(phone) != null){
+            role=1;
+        }
+        else if (studentRepository.findStudentByPhone(phone) != null){
+            role=2;
+        }
+        else if (parentRepository.findParentByPhone(phone) != null){
+            role=3;
+        }
+        return role;
+    }
 
 }

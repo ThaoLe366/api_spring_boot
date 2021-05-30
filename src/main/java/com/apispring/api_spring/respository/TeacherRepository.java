@@ -22,4 +22,7 @@ public interface TeacherRepository extends JpaRepository<Teacher, String> {
             "and s.studentClassId.studentId = :studentid " +
             "and t.name like concat(CONCAT('%', :name), '%')")
     List<Teacher> getAllTeachersByStudentIDWithSimilarName(String studentid, String name);
+
+    @Query("select t from Teacher t where t.phone= ?1")
+    public Teacher findTeacherByPhone(String phone);
 }

@@ -17,4 +17,6 @@ public interface StudentRepository   extends JpaRepository<Student, String> {
 
     public Student findStudentByAccount_AccountId(int accoundId);
 
+    @Query("select s from Student s where s.phone= ?1")
+    public Teacher findStudentByPhone(String phone);
 }
