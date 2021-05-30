@@ -16,4 +16,6 @@ public interface TeacherRepository extends JpaRepository<Teacher, String> {
 
     public Teacher findTeacherByAccount_AccountId(int accountId);
 
+    @Query("select t from Teacher t where t.phone= ?1")
+    public Teacher findTeacherByPhone(String phone);
 }
