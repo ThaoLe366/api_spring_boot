@@ -14,6 +14,6 @@ public interface TeacherRepository extends JpaRepository<Teacher, String> {
 
     Teacher findTeacherByAccount_Username(String userName);
 
-
+    public Teacher findTeacherByAccount_AccountId(int accountId);
 
 }

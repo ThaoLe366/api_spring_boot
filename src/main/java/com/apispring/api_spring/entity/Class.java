@@ -28,14 +28,11 @@ public class Class {
     @JoinColumn(name = "subjectId")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     //@Getter(onMethod = @__( @JsonIgnore))
-    @Setter
     private Subject subject;
-
-    //@Column (name = "teacher_id") // foreign key
-   // private int teacherId;
 
     @ManyToOne
     @JoinColumn(name = "teacher_id")
+  //  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Teacher teacher;
 
 
@@ -60,7 +57,7 @@ public class Class {
     @Column (name = "startSchoolTime") ///Tiết học
     private int startingSchoolTime;
 
-    @Column (name = "endSchoolTime")
+    @Column (name = "endSchoolTime", nullable = true)
     private int endSchoolTime;
 
     @JsonIgnore
@@ -70,6 +67,10 @@ public class Class {
     @JsonIgnore
     @OneToMany(mappedBy = "student")
     private Collection<StudentClass> students;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "_class")
+    private Collection<OffRequest> offRequests;
 
 
     public Collection<StudentClass> getStudents() {
@@ -111,7 +112,7 @@ public class Class {
     }
 
     public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+        this.teacher= teacher;
     }
 
     public int getSemester() {

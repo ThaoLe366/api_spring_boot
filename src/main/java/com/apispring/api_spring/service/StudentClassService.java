@@ -21,6 +21,7 @@ public class StudentClassService {
     }
 
     public StudentClass update(StudentClass studentClass){
+
         return studentClassRepository.save(studentClass);
     }
 
@@ -70,4 +71,8 @@ public class StudentClassService {
     public  List<StudentClass> getStudentClassSchedule(String studentId, int year, int semester){
         return studentClassRepository.getStudentClassSchedule(studentId, year, semester);
     }
+    public List<StudentClass> findStudentClassByIdStudentAndYearAndSemester(String studentId, int year, int semester){
+        return studentClassRepository.findByStudentIdAndYearAndSemester(studentId, year, semester);
+    }
+
 }

@@ -58,6 +58,10 @@ public class AnnouncementService {
         return announcementRepository.findAnnouncementBy_class(_class);
     }
 
+    public List<Announcement> findByStudentId(String studentId){
+        return announcementRepository.findAnnouncementByStudentId(studentId);
+    }
+
 
 
 }

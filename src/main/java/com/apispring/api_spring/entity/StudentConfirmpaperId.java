@@ -26,5 +26,27 @@ public class StudentConfirmpaperId implements Serializable {
     @Column(name = "ConfirmationPaper")
     private int confirmationPaper;
 
+    public String getStudent() {
+        return student;
+    }
 
+    public void setStudent(String student) {
+        this.student = student;
+    }
+
+    public int getConfirmationPaper() {
+        return confirmationPaper;
+    }
+
+    public void setConfirmationPaper(int confirmationPaper) {
+        this.confirmationPaper = confirmationPaper;
+    }
+
+    public Date getRequiredTime() {
+        return requiredTime;
+    }
+
+    public void setRequiredTime(Date requiredTime) {
+        this.requiredTime = requiredTime;
+    }
 }

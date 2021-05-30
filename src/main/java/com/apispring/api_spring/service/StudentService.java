@@ -74,4 +74,9 @@ public class StudentService {
     }
 
 
+    public Student getStudentByAccountID(int accountid){
+        return repository.findStudentByAccount_AccountId(accountid);
+    }
+
+
 }

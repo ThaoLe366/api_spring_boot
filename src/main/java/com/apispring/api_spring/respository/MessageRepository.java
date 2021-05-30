@@ -30,4 +30,7 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 //    @Query(value = "SELECT m FROM Message m WHERE Message.messageId.senderAccountId = :senderAccountId AND Message.messageId.receiverAccountId =:receiverAccountId")
 //    List<Message> findMessageByTwoAccountId(@Param("senderAccountId") int senderAccountId, @Param("receiverAccountId") int receiverAccountId);
 
+    public List<Message> findMessagesBySenderAccount_AccountIdAndReceiverAccount_AccountId(int accountIdSender, int accountIdReceiver);
+
+    public List<Message> findMessagesBySenderAccount_AccountIdOrReceiverAccount_AccountId(int accountId, int accountId2);
 }

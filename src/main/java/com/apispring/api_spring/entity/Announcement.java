@@ -17,7 +17,6 @@ public class Announcement {
     @Column(name = "AnnouncementID")
     private int announcementId;
 
-
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher sender;
@@ -25,6 +24,8 @@ public class Announcement {
     @Column (name = "content")
     private String content;
 
+    @Column(name = "title")
+    private String title;
 
     @Column (name = "announcementTime")
     private Date announcementTime;
@@ -57,7 +58,13 @@ public class Announcement {
         this.announcementId = announcementID;
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getContent() {
         return content;

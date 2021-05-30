@@ -56,6 +56,10 @@ public class Teacher {
     @OneToMany(mappedBy = "teacher")
     private Collection<Class> classes;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "sender")
+    private Collection<OffRequest> offRequests;
+
     public Collection<Announcement> getAnnouncements() {
         return announcements;
     }

@@ -2,6 +2,7 @@ package com.apispring.api_spring.controller;
 
 import com.apispring.api_spring.entity.Account;
 import com.apispring.api_spring.entity.Student;
+import com.apispring.api_spring.entity.StudentClass;
 import com.apispring.api_spring.entity.Teacher;
 
 import com.apispring.api_spring.service.StudentService;
@@ -27,6 +28,11 @@ public class StudentController {
     @GetMapping("/student/{id}")
     public Student getInfo(@PathVariable String  id) {
         return studentService.getStudentById(id);
+    }
+
+    @GetMapping("/student/accountId/{accountId}")
+    public Student getStudentByAccountID(@PathVariable int accountId){
+        return studentService.getStudentByAccountID(accountId);
     }
 
     @PutMapping("/student/info")
