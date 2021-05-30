@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -74,5 +75,39 @@ public class StudentClassService {
     public List<StudentClass> findStudentClassByIdStudentAndYearAndSemester(String studentId, int year, int semester){
         return studentClassRepository.findByStudentIdAndYearAndSemester(studentId, year, semester);
     }
+
+    public List<StudentClass> findByTeacherIdAndYearAndSemester(String teacherId, int year, int semester){
+        return studentClassRepository.findByTeacherIdAndYearAndSemester(teacherId,year,semester);
+    }
+
+    public List<Student> findStudentPass(String teacherId, int year, int semester){
+        ArrayList<Student> students = new ArrayList<>();
+
+        List<StudentClass> studentClasses = studentClassRepository.findByTeacherIdAndYearAndSemester(teacherId,year,semester);
+        for (StudentClass i:studentClasses  ) {
+            if((i.getFinalMark()+i.getMiddleMark())/2>5)
+                students.add(i.getStudent());
+
+        }
+        if(students!=null)
+            return students;
+        return null;
+    }
+
+    public int findNumberPass(String teacherId, int year, int semester){
+        ArrayList<Student> students=new ArrayList<>();
+
+        List<StudentClass> studentClasses = studentClassRepository.findByTeacherIdAndYearAndSemester(teacherId,year,semester);
+        for (StudentClass i:studentClasses  ) {
+            if((i.getFinalMark()+i.getMiddleMark())/2>5)
+                students.add(i.getStudent());
+
+        }
+        if(students!=null)
+            return students.size();
+        return 0;
+    }
+
+
 
 }

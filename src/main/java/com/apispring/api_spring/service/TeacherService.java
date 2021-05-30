@@ -67,4 +67,8 @@ public class TeacherService {
     public Teacher getTeacherByAccountID(int accountId){
        return   repository.findTeacherByAccount_AccountId(accountId);
     }
+
+    public List<Teacher> getAllTeachersByStudentIDWithSimilarName(String studentId, String name ){
+        return  repository.getAllTeachersByStudentIDWithSimilarName(studentId,name);
+    }
 }
