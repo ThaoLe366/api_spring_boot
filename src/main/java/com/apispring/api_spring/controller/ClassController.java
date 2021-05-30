@@ -83,6 +83,10 @@ public class ClassController {
       return   classService.findClassByTeacherId(teacherId);
     }
 
+    @GetMapping("class/studentId/{studentId}")
+    public List<Class> findClassesByStudentId(@PathVariable  String studentId){
+        return classService.findClassesByStudentId(studentId);
+    }
 
 
 }

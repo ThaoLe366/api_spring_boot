@@ -53,4 +53,10 @@ public class TeacherController {
     public Teacher updatePassword(@RequestBody Teacher teacher) {
         return teacherService.updatePassword(teacher);
     }
+
+    @GetMapping("/teacher/studentId/{studentId}/teacherName/{name}")
+    public List<Teacher> getAllTeachersByStudentIDWithSimilarName(@PathVariable String studentId, @PathVariable String name){
+        return teacherService.getAllTeachersByStudentIDWithSimilarName(studentId, name);
+    }
+
 }

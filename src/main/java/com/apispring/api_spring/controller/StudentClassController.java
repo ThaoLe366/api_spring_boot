@@ -99,7 +99,7 @@ public class StudentClassController {
     }
 
     @PutMapping("class/addstudent/{classId}/{studentId}")
-    public StudentClass addStudentToClass (@PathVariable String studentId ,@PathVariable String classId){
+    public StudentClass addStudentToClass (@PathVariable String classId,@PathVariable String studentId ){
         Class mclass= classService.findClassId(classId);
         Student student = studentService.getStudentById(studentId);
 
@@ -128,5 +128,21 @@ public class StudentClassController {
     public List<StudentClass> findByStudentIdAndYearAndSemester(@PathVariable String id_student, @PathVariable int year, @PathVariable int semester){
         return studentClassService.findStudentClassByIdStudentAndYearAndSemester(id_student, year, semester);
     }
+
+    @GetMapping(MAPPING + "/teacherId/{teacherId}/{year}/{semester}")
+    public List<StudentClass> findByTeacherIdAndYearAndSemester(@PathVariable String teacherId, @PathVariable int year, @PathVariable int semester){
+        return studentClassService.findByTeacherIdAndYearAndSemester(teacherId, year, semester);
+    }
+
+    @GetMapping(MAPPING + "/studentPass/{teacherId}/{year}/{semester}")
+    public List<Student> findStudentPass(@PathVariable String teacherId, @PathVariable int year, @PathVariable int semester){
+        return studentClassService.findStudentPass(teacherId, year, semester);
+    }
+
+    @GetMapping(MAPPING + "/numberStudentPass/{teacherId}/{year}/{semester}")
+    public int findNumberStudentPass(@PathVariable String teacherId, @PathVariable int year, @PathVariable int semester){
+        return studentClassService.findNumberPass(teacherId, year, semester);
+    }
+
 
 }
