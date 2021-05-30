@@ -63,4 +63,8 @@ public class TeacherService {
     }
 
     public List<Teacher> findAll (){ return repository.findAll();}
+
+    public Teacher getTeacherByAccountID(int accountId){
+       return   repository.findTeacherByAccount_AccountId(accountId);
+    }
 }

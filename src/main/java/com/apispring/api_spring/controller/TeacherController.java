@@ -29,7 +29,10 @@ public class TeacherController {
         return teacherService.getTeacherById(id);
     }
 
-
+    @GetMapping("/teacher/accountId/{accountId}")
+    public Teacher getTeacherByAccountID(int accountId){
+        return teacherService.getTeacherByAccountID(accountId);
+    }
 
     @PutMapping("/teacher/info")
     public Teacher updateInfo(@RequestBody Teacher teacher) {

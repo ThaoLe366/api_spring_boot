@@ -39,4 +39,13 @@ public class MessageService {
         return messageRepository.getAllStudentInClassBySimilarName(classId, name);
     }
 
+    public List<Message> getMessageBetweenUsers(int senderAccountID, int receiverAccountID){
+        return messageRepository.findMessagesBySenderAccount_AccountIdAndReceiverAccount_AccountId(senderAccountID,receiverAccountID);
+    }
+
+    public List<Message> getAllMessageByAccount(int accountid){
+        return messageRepository.findMessagesBySenderAccount_AccountIdOrReceiverAccount_AccountId(accountid, accountid);
+    }
+
+
 }

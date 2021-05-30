@@ -49,4 +49,15 @@ public class MessageController {
     public List<Student> getAllStudentOfTeacherWithSimilarName(@PathVariable String id_teacher, @PathVariable String name){
         return messageService.getAllStudentOfTeacherWithSimilarName(id_teacher, name);
     }
+
+    @GetMapping("message/{senderAccountId}/{receiverAccountId}")
+    public List<Message> getMessageBetweenUsers(int senderAccountID, int receiverAccountID){
+        return messageService.getMessageBetweenUsers(senderAccountID,receiverAccountID);
+    }
+    @GetMapping("message/accountId/{accountId}")
+    public  List<Message> getAllMessageByAccount(int accountId){
+        return messageService.getAllMessageByAccount(accountId);
+    }
+
+
 }

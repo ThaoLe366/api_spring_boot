@@ -39,7 +39,6 @@ public class Student {
     @Column(name = "Image")
     private String image;
 
-
     @OneToOne
     private Account account;
 

@@ -57,7 +57,7 @@ public class Class {
     @Column (name = "startSchoolTime") ///Tiết học
     private int startingSchoolTime;
 
-    @Column (name = "endSchoolTime")
+    @Column (name = "endSchoolTime", nullable = true)
     private int endSchoolTime;
 
     @JsonIgnore
@@ -67,6 +67,10 @@ public class Class {
     @JsonIgnore
     @OneToMany(mappedBy = "student")
     private Collection<StudentClass> students;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "_class")
+    private Collection<OffRequest> offRequests;
 
 
     public Collection<StudentClass> getStudents() {
