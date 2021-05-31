@@ -30,7 +30,7 @@ public class TeacherController {
     }
 
     @GetMapping("/teacher/accountId/{accountId}")
-    public Teacher getTeacherByAccountID(int accountId){
+    public Teacher getTeacherByAccountID(@PathVariable int accountId){
         return teacherService.getTeacherByAccountID(accountId);
     }
 
