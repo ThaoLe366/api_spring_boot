@@ -19,5 +19,5 @@ public interface StudentRepository   extends JpaRepository<Student, String> {
 
 
     @Query("select s from Student s where s.phone= ?1")
-    public Teacher findStudentByPhone(String phone);
+    public Student findStudentByPhone(String phone);
 }

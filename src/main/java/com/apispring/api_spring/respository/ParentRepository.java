@@ -21,5 +21,5 @@ public interface ParentRepository  extends JpaRepository<Parent, String> {
 
 
     @Query("select p from Parent p where p.phone= ?1")
-    public Teacher findParentByPhone(String phone);
+    public Parent findParentByPhone(String phone);
 }

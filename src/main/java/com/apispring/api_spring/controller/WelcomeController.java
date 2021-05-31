@@ -127,12 +127,17 @@ public class WelcomeController {
             return userDetailService.updatePassword(accountId, password);
     }
     @PostMapping("/account/{accountId}/address/{address}/phone/{phone}")
-    public int updateInfo( @PathVariable int accountId, @PathVariable String address, @PathVariable String phone) {
+    public Role updateInfo( @PathVariable int accountId, @PathVariable String address, @PathVariable String phone) {
         return userDetailService.updateInfo(accountId, address,phone);
     }
 
     @GetMapping("/account/phone/{phone}")
-    public int availablePhone(@PathVariable String phone) {
+    public Role availablePhone(@PathVariable String phone) {
         return userDetailService.phoneAvailable(phone);
+    }
+
+    @PostMapping("/account/phone/{uPhone}/password{uPassword}")
+    public Account updatePasswordByPhone(String phone, String password){
+        return  userDetailService.updatePasswordByPhone(phone, password);
     }
 }
