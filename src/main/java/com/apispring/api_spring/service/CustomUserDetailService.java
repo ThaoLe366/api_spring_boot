@@ -94,17 +94,20 @@ public class CustomUserDetailService implements UserDetailsService {
             Teacher teacher = teacherRepository.findTeacherByAccount_AccountId(accountId);
             teacher.setPhone(phone);
             teacher.setAddress(address);
+            teacherRepository.save(teacher);
 
         } else if (studentRepository.findStudentByAccount_AccountId(accountId) != null) {
             role = 2;
             Student student = studentRepository.findStudentByAccount_AccountId(accountId);
             student.setStudentPhone(phone);
             student.setStudentAddress(address);
+            studentRepository.save(student);
         } else if ((parentRepository.findParentByAccount_AccountId(accountId)) != null) {
             role = 3;
             Parent parent = parentRepository.findParentByAccount_AccountId(accountId);
             parent.setParentAddress(address);
             parent.setParentPhone(phone);
+            parentRepository.save(parent);
 
         }
         Role r = new Role(role);
