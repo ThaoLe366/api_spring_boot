@@ -44,7 +44,7 @@ public class StudentClassController {
         StudentClass newStudentClass = studentClassService.findStudentClass(id_student, id_class);
         newStudentClass.setComment(studentClass.getComment());
         newStudentClass.setRating(studentClass.getRating());
-        newStudentClass.setCreateDate(Calendar.getInstance().getTime());
+       // newStudentClass.setCreateDate(Calendar.getInstance().getTime());
         return studentClassService.save(newStudentClass);
     }
 
@@ -54,7 +54,7 @@ public class StudentClassController {
         StudentClass s = studentClassService.findStudentClass(studentClass.getStudentClassId().getStudentId(), studentClass.getStudentClassId().getClassId());
         s.setComment(studentClass.getComment());
         s.setRating(studentClass.getRating());
-        s.setCreateDate(Calendar.getInstance().getTime());
+       // s.setCreateDate(Calendar.getInstance().getTime());
         return studentClassService.update(s);
     }
 

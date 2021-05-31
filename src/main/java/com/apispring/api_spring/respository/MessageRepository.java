@@ -2,6 +2,7 @@ package com.apispring.api_spring.respository;
 
 import com.apispring.api_spring.entity.Message;
 import com.apispring.api_spring.entity.Student;
+import com.apispring.api_spring.entity.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -42,4 +43,9 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
     @Query("SELECT mess FROM Message mess where (mess.senderAccount.accountId=:senderAccountID and mess.receiverAccount.accountId = :receiverAccountID) " +
             " or (mess.senderAccount.accountId=:receiverAccountID and mess.receiverAccount.accountId = :senderAccountID)")
     public List<Message> getMessageBetweenUsersAccount(@Param("senderAccountID") int senderAccountID,@Param("receiverAccountID")  int receiverAccountID);
+
+    @Query( value = "SELECT t FROM Teacher t where t.teacherId IN " +
+            "(SELECT s._class.teacher.teacherId FROM StudentClass s where " +
+            " s.studentClassId.studentId = :studentid) and t.name like CONCAT(CONCAT('%', :name), '%')")
+   public List<Teacher> getAllTeachersByStudentIDWithSimilarName( @Param("studentid") String studentid,@Param("name") String name);
 }

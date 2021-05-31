@@ -2,6 +2,7 @@ package com.apispring.api_spring.controller;
 
 import com.apispring.api_spring.entity.Message;
 import com.apispring.api_spring.entity.Student;
+import com.apispring.api_spring.entity.Teacher;
 import com.apispring.api_spring.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,27 +41,33 @@ public class MessageController {
     }
 
 
-    @GetMapping("message/{id_class}/class/{name}")
+    @GetMapping("/message/{id_class}/class/{name}")
     public List<Student> getAllStudentInClassBySimilarName(@PathVariable String id_class, @PathVariable String name){
         return messageService.getAllStudentInClassBySimilarName(id_class, name);
     }
 
-    @GetMapping("message/{id_teacher}/teacher/{name}")
+    @GetMapping("/message/{id_teacher}/teacher/{name}")
     public List<Student> getAllStudentOfTeacherWithSimilarName(@PathVariable String id_teacher, @PathVariable String name){
         return messageService.getAllStudentOfTeacherWithSimilarName(id_teacher, name);
     }
 
-    @GetMapping("message/{senderAccountId}/{receiverAccountId}")
+    @GetMapping("/message/{senderAccountId}/{receiverAccountId}")
     public List<Message> getMessageBetweenUsers(@PathVariable int senderAccountId,@PathVariable int receiverAccountId){
         return messageService.getMessageBetweenUsers(senderAccountId,receiverAccountId);
     }
-    @GetMapping("message/accountId/{accountId}")
+    @GetMapping("/message/accountId/{accountId}")
     public  List<Message> getAllMessageByAccount(int accountId){
         return messageService.getAllMessageByAccount(accountId);
     }
 
-    @GetMapping("message/all/{senderAccountId}/{receiverAccountId}")
+    @GetMapping("/message/all/{senderAccountId}/{receiverAccountId}")
     public List<Message> getMessageBetweenUsersAccount(int senderAccountID, int receiverAccountID){
         return messageService.getMessageBetweenUsersAccount(senderAccountID,receiverAccountID);
     }
+
+    @GetMapping("/message/{id_student}/student/{name}")
+    public List<Teacher> getAllTeachersByStudentIDWithSimilarName(@PathVariable String id_student, @PathVariable String name){
+        return messageService.getAllTeachersByStudentIDWithSimilarName(id_student, name);
+    }
+
 }
