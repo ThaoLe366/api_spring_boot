@@ -19,7 +19,7 @@ public class StudentService {
     public void delete (String studentId){repository.deleteById(studentId);}
 
     public Student createStudent(Student newStudent) {
-
+        newStudent.setStatus(1); // defaul status = 1
         return repository.save(newStudent);
     }
 
@@ -69,6 +69,12 @@ public class StudentService {
         Account oldAccount = oldStudent.getAccount();
         oldAccount.setPassword(student.getAccount().getPassword());
         oldStudent.setAccount(oldAccount);
+
+        // update year major bankseri status
+        oldStudent.setBankSeri(student.getBankSeri());
+        oldStudent.setMajor(student.getMajor());
+        oldStudent.setYear(student.getYear());
+        oldStudent.setStatus(student.getStatus());
 
         return  repository.save(oldStudent);
     }
