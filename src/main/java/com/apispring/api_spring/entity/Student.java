@@ -40,7 +40,7 @@ public class Student {
     private String image;
 
     @Column(name = "Year")
-    private String year;
+    private int year;
 
     @Column(name = "BankSeri")
     private String bankSeri;
@@ -134,11 +134,11 @@ public class Student {
         this.account = account;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
