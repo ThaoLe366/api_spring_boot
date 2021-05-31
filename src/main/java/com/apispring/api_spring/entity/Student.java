@@ -39,6 +39,18 @@ public class Student {
     @Column(name = "Image")
     private String image;
 
+    @Column(name = "Year")
+    private int year;
+
+    @Column(name = "BankSeri")
+    private String bankSeri;
+
+    @Column(name = "Major")
+    private String major;
+
+    @Column(name = "Status")
+    private int status; // status = 1 còn học, status = 0 nghỉ học
+
     @OneToOne
     private Account account;
 
@@ -120,6 +132,38 @@ public class Student {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getBankSeri() {
+        return bankSeri;
+    }
+
+    public void setBankSeri(String bankSeri) {
+        this.bankSeri = bankSeri;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Student() {

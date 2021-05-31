@@ -20,4 +20,6 @@ public interface ClassRepository extends JpaRepository<Class,String> {
             "where c.classId = sc.studentClassId.classId " +
             "and sc.studentClassId.studentId = :studentId ")
     List<Class> findClassesByStudentId(String studentId);
+
+    List<Class> findClassesByTeacher_TeacherIdAndStudyingYearAndSemester(String teacherId, int studyingYear, int semester);
 }

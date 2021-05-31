@@ -88,5 +88,9 @@ public class ClassController {
         return classService.findClassesByStudentId(studentId);
     }
 
+    @GetMapping("class/{teacherId}/{year}/{semester}")
+    public List<Class> findByTeacherIdAAndStudyingYearAndSemester(@PathVariable String teacherId,@PathVariable int year, @PathVariable int semester){
+        return classService.findClassesByTeacherIdAndYearAndSemester(teacherId,year,semester);
+    }
 
 }

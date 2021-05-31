@@ -2,6 +2,7 @@ package com.apispring.api_spring.service;
 
 import com.apispring.api_spring.entity.Message;
 import com.apispring.api_spring.entity.Student;
+import com.apispring.api_spring.entity.Teacher;
 import com.apispring.api_spring.respository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -40,12 +41,18 @@ public class MessageService {
     }
 
     public List<Message> getMessageBetweenUsers(int senderAccountID, int receiverAccountID){
-        return messageRepository.findMessagesBySenderAccount_AccountIdAndReceiverAccount_AccountId(senderAccountID,receiverAccountID);
+        return messageRepository.getMessageBetweenUsers(senderAccountID,receiverAccountID);
     }
 
     public List<Message> getAllMessageByAccount(int accountid){
         return messageRepository.findMessagesBySenderAccount_AccountIdOrReceiverAccount_AccountId(accountid, accountid);
     }
 
+    public List<Message> getMessageBetweenUsersAccount(int senderAccountID, int receiverAccountID){
+        return messageRepository.getMessageBetweenUsersAccount(senderAccountID, receiverAccountID);
+    }
 
+    public List<Teacher> getAllTeachersByStudentIDWithSimilarName(String studentId, String name){
+        return messageRepository.getAllTeachersByStudentIDWithSimilarName(studentId, name);
+    }
 }
