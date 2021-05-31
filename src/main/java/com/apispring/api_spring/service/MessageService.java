@@ -2,6 +2,7 @@ package com.apispring.api_spring.service;
 
 import com.apispring.api_spring.entity.Message;
 import com.apispring.api_spring.entity.Student;
+import com.apispring.api_spring.entity.Teacher;
 import com.apispring.api_spring.respository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -51,4 +52,7 @@ public class MessageService {
         return messageRepository.getMessageBetweenUsersAccount(senderAccountID, receiverAccountID);
     }
 
+    public List<Teacher> getAllTeachersByStudentIDWithSimilarName(String studentId, String name){
+        return messageRepository.getAllTeachersByStudentIDWithSimilarName(studentId, name);
+    }
 }
