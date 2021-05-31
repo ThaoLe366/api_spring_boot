@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers(HttpMethod.POST,"/register/{role}").permitAll()
-                .antMatchers("/login/{role}")
+                .antMatchers("/login/{role}").permitAll()
                 .antMatchers("/account/phone/{phone}")
                 .permitAll()
                 .anyRequest().authenticated()
