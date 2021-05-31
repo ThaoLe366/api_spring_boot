@@ -35,5 +35,9 @@ public class ClassService {
         return repository.findClassByTeacher_TeacherID(teacherId);
     }
 
+    public List<Class> findClassesByStudentId(String studentId){
+        return repository.findClassesByStudentId(studentId);
+    }
+
 
 }

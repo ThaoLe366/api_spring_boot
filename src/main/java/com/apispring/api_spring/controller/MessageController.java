@@ -51,8 +51,8 @@ public class MessageController {
     }
 
     @GetMapping("message/{senderAccountId}/{receiverAccountId}")
-    public List<Message> getMessageBetweenUsers(int senderAccountID, int receiverAccountID){
-        return messageService.getMessageBetweenUsers(senderAccountID,receiverAccountID);
+    public List<Message> getMessageBetweenUsers(@PathVariable int senderAccountId,@PathVariable int receiverAccountId){
+        return messageService.getMessageBetweenUsers(senderAccountId,receiverAccountId);
     }
     @GetMapping("message/accountId/{accountId}")
     public  List<Message> getAllMessageByAccount(int accountId){
