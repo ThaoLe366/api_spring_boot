@@ -108,6 +108,7 @@ public class StudentClassService {
         return 0;
     }
 
-
-
+    public List<StudentClass> getStudentClassBySemsterAndYear(int year, int semester){
+        return studentClassRepository.getStudentClassBySemsterAndYear(year,semester);
+    }
 }

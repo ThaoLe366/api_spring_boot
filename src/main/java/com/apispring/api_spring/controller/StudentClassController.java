@@ -144,5 +144,9 @@ public class StudentClassController {
         return studentClassService.findNumberPass(teacherId, year, semester);
     }
 
+    @GetMapping(MAPPING+"/year/{year}/semester/{semester}")
+    public List<StudentClass> getStudentClassBySemsterAndYear(@PathVariable int year, @PathVariable int semester){
+        return studentClassService.getStudentClassBySemsterAndYear(year,semester);
+    }
 
 }
