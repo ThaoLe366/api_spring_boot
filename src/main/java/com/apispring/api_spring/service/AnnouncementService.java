@@ -1,10 +1,8 @@
 package com.apispring.api_spring.service;
 
-import com.apispring.api_spring.dto.AnnounceDTO;
 import com.apispring.api_spring.entity.Announcement;
 import com.apispring.api_spring.entity.Class;
 import com.apispring.api_spring.entity.Teacher;
-import com.apispring.api_spring.mapper.AnnouncementMapper;
 import com.apispring.api_spring.respository.AnnouncementRepository;
 import com.apispring.api_spring.respository.ClassRepository;
 import com.apispring.api_spring.respository.TeacherRepository;
@@ -25,13 +23,10 @@ public class AnnouncementService {
     @Autowired
     private ClassRepository classRepository;
 
-    @Autowired
-    private AnnouncementMapper mapper;
 
-    public AnnounceDTO save (AnnounceDTO announceDTO){
+    public Announcement save (Announcement announcement){
 
-        Announcement announcement= mapper.toEntity(announceDTO);
-        return   mapper.toDTO(announcementRepository.save(announcement));
+        return   announcementRepository.save(announcement);
     }
 
     public List<Announcement> findAll (){
@@ -62,6 +57,9 @@ public class AnnouncementService {
         return announcementRepository.findAnnouncementByStudentId(studentId);
     }
 
+    public List<Announcement> findByStudentIdAndSenderNull (String studentId){
+        return announcementRepository.findAnnouncementsByStudentIdAndNullSender(studentId);
+    }
 
 
 }
