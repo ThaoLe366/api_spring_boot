@@ -48,19 +48,22 @@ public class CustomUserDetailService implements UserDetailsService {
 //        return repository.saveAll(accounts);
 //    }
 //
-    public Teacher findTeacherByUserName(String userName){
+    public Teacher findTeacherByUserName(String userName) {
 
-        Teacher teacher= teacherRepository.findTeacherByAccount_Username(userName);
+        Teacher teacher = teacherRepository.findTeacherByAccount_Username(userName);
         return teacher;
     }
-    public Parent findParentByUserName(String userName){
-        Parent parent= parentRepository.findParentByAccount_Username(userName);
-                return parent;
+
+    public Parent findParentByUserName(String userName) {
+        Parent parent = parentRepository.findParentByAccount_Username(userName);
+        return parent;
     }
-    public Student findStudentByUserName(String userName){
-        Student student= studentRepository.findStudentByAccount_Username(userName);
+
+    public Student findStudentByUserName(String userName) {
+        Student student = studentRepository.findStudentByAccount_Username(userName);
         return student;
     }
+
     public Account getAccountById(int id) {
 
         return repository.findById(id).orElse(null);
@@ -70,9 +73,11 @@ public class CustomUserDetailService implements UserDetailsService {
         repository.deleteById(id);
         return "product remove: " + id;
     }
-    public List<Account> findAll (){
+
+    public List<Account> findAll() {
         return repository.findAll();
     }
+
     public Account updatePassword(int accountId, String password) {
 
         Account existAccount = repository.findById(accountId).orElse(null);
@@ -80,44 +85,69 @@ public class CustomUserDetailService implements UserDetailsService {
         existAccount.setPassword(password);
         return repository.save(existAccount);
     }
-    public int updateInfo(int accountId, String address, String phone ){
 
-        int role=-1;
-        if (teacherRepository.findTeacherByAccount_AccountId(accountId) != null){
-            role=1;
-            Teacher teacher= teacherRepository.findTeacherByAccount_AccountId(accountId);
+    public Role updateInfo(int accountId, String address, String phone) {
+
+        int role = -1;
+        if (teacherRepository.findTeacherByAccount_AccountId(accountId) != null) {
+            role = 1;
+            Teacher teacher = teacherRepository.findTeacherByAccount_AccountId(accountId);
             teacher.setPhone(phone);
             teacher.setAddress(address);
 
-        }
-        else if (studentRepository.findStudentByAccount_AccountId(accountId) != null){
-            role=2;
-            Student student= studentRepository.findStudentByAccount_AccountId(accountId);
+        } else if (studentRepository.findStudentByAccount_AccountId(accountId) != null) {
+            role = 2;
+            Student student = studentRepository.findStudentByAccount_AccountId(accountId);
             student.setStudentPhone(phone);
             student.setStudentAddress(address);
-        }
-        else if ((parentRepository.findParentByAccount_AccountId(accountId))!= null){
-            role=3;
-            Parent parent=parentRepository.findParentByAccount_AccountId(accountId);
+        } else if ((parentRepository.findParentByAccount_AccountId(accountId)) != null) {
+            role = 3;
+            Parent parent = parentRepository.findParentByAccount_AccountId(accountId);
             parent.setParentAddress(address);
             parent.setParentPhone(phone);
 
         }
-        return role;
+        Role r = new Role(role);
+        return r;
     }
-    public int phoneAvailable( String phone ){
 
-        int role=-1;
-        if (teacherRepository.findTeacherByPhone(phone) != null){
-            role=1;
+    public Role phoneAvailable(String phone) {
+
+        int role = -1;
+        if (teacherRepository.findTeacherByPhone(phone) != null) {
+            role = 1;
+        } else if (studentRepository.findStudentByPhone(phone) != null) {
+            role = 2;
+        } else if (parentRepository.findParentByPhone(phone) != null) {
+            role = 3;
         }
-        else if (studentRepository.findStudentByPhone(phone) != null){
-            role=2;
+        Role r = new Role(role);
+        return r;
+    }
+
+    public Account updatePasswordByPhone(String phone, String password) {
+        Account newAccount= new Account();
+        int role = -1;
+        if (teacherRepository.findTeacherByPhone(phone) != null) {
+            Teacher teacher = teacherRepository.findTeacherByPhone(phone);
+            Account oldAccount = teacher.getAccount();
+            oldAccount.setPassword(password);
+            newAccount = repository.save(oldAccount);
+            role = 1;
+        } else if (studentRepository.findStudentByPhone(phone) != null) {
+            Student student = studentRepository.findStudentByPhone(phone);
+            Account oldAccount = student.getAccount();
+            oldAccount.setPassword(password);
+            newAccount = repository.save(oldAccount);
+            role = 2;
+        } else if (parentRepository.findParentByPhone(phone) != null) {
+            Parent parent = parentRepository.findParentByPhone(phone);
+            Account oldAccount = parent.getAccount();
+            oldAccount.setPassword(password);
+            newAccount = repository.save(oldAccount);
+            role = 3;
         }
-        else if (parentRepository.findParentByPhone(phone) != null){
-            role=3;
-        }
-        return role;
+        return newAccount;
     }
 
 }
