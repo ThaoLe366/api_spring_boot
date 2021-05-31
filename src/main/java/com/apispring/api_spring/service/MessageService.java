@@ -40,7 +40,7 @@ public class MessageService {
     }
 
     public List<Message> getMessageBetweenUsers(int senderAccountID, int receiverAccountID){
-        return messageRepository.findMessagesBySenderAccount_AccountIdAndReceiverAccount_AccountId(senderAccountID,receiverAccountID);
+        return messageRepository.getMessageBetweenUsers(senderAccountID,receiverAccountID);
     }
 
     public List<Message> getAllMessageByAccount(int accountid){

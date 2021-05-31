@@ -22,7 +22,8 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 
     @Query ("SELECT s " +
             " FROM Student  s" +
-            " where s.studentId IN (SELECT sl.studentClassId.studentId from StudentClass sl where sl.studentClassId.classId " +
+            " where s.studentId IN (SELECT sl.studentClassId.studentId from StudentClass sl " +
+            "where sl.studentClassId.classId " +
             " IN (SELECT c.classId FROM Class c where c.teacher.teacherId = :teacherID)) " +
             " and s.name like CONCAT(CONCAT('%', :name), '%')")
     List<Student> getAllStudentOfTeacherWithSimilarName (@Param("teacherID")String teacherID, @Param("name") String name);
@@ -30,7 +31,11 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 //    @Query(value = "SELECT m FROM Message m WHERE Message.messageId.senderAccountId = :senderAccountId AND Message.messageId.receiverAccountId =:receiverAccountId")
 //    List<Message> findMessageByTwoAccountId(@Param("senderAccountId") int senderAccountId, @Param("receiverAccountId") int receiverAccountId);
 
-    public List<Message> findMessagesBySenderAccount_AccountIdAndReceiverAccount_AccountId(int accountIdSender, int accountIdReceiver);
+    //public List<Message> findMessagesBySenderAccount_AccountIdAndReceiverAccount_AccountId(int accountIdSender, int accountIdReceiver);
+
+    @Query("SELECT m FROM Message m where ((m.messageId.senderAccountId=:senderAccountID and m.messageId.receiverAccountId = :receiverAccountID) " +
+            " or (m.messageId.senderAccountId=:receiverAccountID and m.messageId.receiverAccountId = :senderAccountID))")
+    List<Message> getMessageBetweenUsers(@Param("senderAccountID") int senderAccountID,@Param("receiverAccountID") int receiverAccountID);
 
     public List<Message> findMessagesBySenderAccount_AccountIdOrReceiverAccount_AccountId(int accountId, int accountId2);
 }
