@@ -56,12 +56,12 @@ public class MessageController {
         return messageService.getMessageBetweenUsers(senderAccountId,receiverAccountId);
     }
     @GetMapping("/message/accountId/{accountId}")
-    public  List<Message> getAllMessageByAccount(int accountId){
+    public  List<Message> getAllMessageByAccount(@PathVariable int accountId){
         return messageService.getAllMessageByAccount(accountId);
     }
 
     @GetMapping("/message/all/{senderAccountId}/{receiverAccountId}")
-    public List<Message> getMessageBetweenUsersAccount(int senderAccountID, int receiverAccountID){
+    public List<Message> getMessageBetweenUsersAccount(@PathVariable int senderAccountID, @PathVariable int receiverAccountID){
         return messageService.getMessageBetweenUsersAccount(senderAccountID,receiverAccountID);
     }
 

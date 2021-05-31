@@ -21,22 +21,22 @@ public class Student {
     private String studentId;
 
 
-    @Column(name = "Name")
+    @Column(name = "_Name")
     private String name;
 
-    @Column(name = "Birthday")
+    @Column(name = "_Birthday")
     private Date birthday;
 
-    @Column(name = "Phone")
+    @Column(name = "_Phone")
     private String phone;
 
-    @Column(name = "Address")
+    @Column(name = "_Address")
     private String address;
 
-    @Column(name = "Email")
+    @Column(name = "_Email")
     private String email;
 
-    @Column(name = "Image")
+    @Column(name = "_Image")
     private String image;
 
     @Column(name = "Year")
