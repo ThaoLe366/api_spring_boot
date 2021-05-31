@@ -47,5 +47,8 @@ public class MessageService {
         return messageRepository.findMessagesBySenderAccount_AccountIdOrReceiverAccount_AccountId(accountid, accountid);
     }
 
+    public List<Message> getMessageBetweenUsersAccount(int senderAccountID, int receiverAccountID){
+        return messageRepository.getMessageBetweenUsersAccount(senderAccountID, receiverAccountID);
+    }
 
 }

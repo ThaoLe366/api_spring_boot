@@ -59,5 +59,8 @@ public class MessageController {
         return messageService.getAllMessageByAccount(accountId);
     }
 
-
+    @GetMapping("message/all/{senderAccountId}/{receiverAccountId}")
+    public List<Message> getMessageBetweenUsersAccount(int senderAccountID, int receiverAccountID){
+        return messageService.getMessageBetweenUsersAccount(senderAccountID,receiverAccountID);
+    }
 }
