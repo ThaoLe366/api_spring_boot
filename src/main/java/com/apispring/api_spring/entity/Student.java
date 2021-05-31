@@ -49,7 +49,7 @@ public class Student {
     private String major;
 
     @Column(name = "Status")
-    private int status; // status = 1 còn học, status = 0 nghỉ học
+    private int status=1; // status = 1 còn học, status = 0 nghỉ học
 
     @OneToOne
     private Account account;

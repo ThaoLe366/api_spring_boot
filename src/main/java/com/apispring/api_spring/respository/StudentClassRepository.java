@@ -64,4 +64,7 @@ public interface StudentClassRepository extends JpaRepository<StudentClass, Stud
             " and s._class.semester = :semester and s._class.studyingYear = :year")
     List<StudentClass> findByTeacherIdAndYearAndSemester(@Param("teacherId") String teacherId, @Param("year") int year, @Param("semester") int semester);
 
+    @Query (value = "select s from StudentClass s where s._class.semester = :semester and s._class.studyingYear = :year")
+    List<StudentClass> getStudentClassBySemsterAndYear( @Param("year") int year, @Param("semester") int semester);
+
 }
