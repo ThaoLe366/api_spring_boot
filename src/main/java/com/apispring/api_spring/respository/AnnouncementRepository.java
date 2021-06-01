@@ -17,7 +17,7 @@ public interface AnnouncementRepository  extends JpaRepository<Announcement, Int
 
     @Query( value = "select a from  Announcement a,StudentClass s " +
             " where a._class.classId = s.studentClassId.classId and" +
-            " s.studentClassId.studentId= (:studentId)")
+            " s.studentClassId.studentId= (:studentId) and a.sender is not  null")
     public List<Announcement> findAnnouncementByStudentId(@Param("studentId") String studentId);
 
     @Query(value = "select a from  Announcement a,StudentClass s " +
