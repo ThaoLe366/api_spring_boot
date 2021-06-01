@@ -137,7 +137,7 @@ public class WelcomeController {
     }
 
     @PostMapping("/account/phone/{uPhone}/password{uPassword}")
-    public Account updatePasswordByPhone(@PathVariable String phone,@PathVariable String password){
-        return  userDetailService.updatePasswordByPhone(phone, password);
+    public Account updatePasswordByPhone(@PathVariable String uPhone,@PathVariable String uPassword){
+        return  userDetailService.updatePasswordByPhone(uPhone, uPassword);
     }
 }
