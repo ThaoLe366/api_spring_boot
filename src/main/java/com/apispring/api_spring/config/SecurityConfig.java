@@ -65,6 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login/{role}").permitAll()
                 .antMatchers("/account/phone/{phone}")
                 .permitAll()
+                .antMatchers("/account/phone/{uPhone}/password{uPassword}").permitAll()
                 .anyRequest().authenticated()
                 .and().exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
