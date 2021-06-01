@@ -115,8 +115,8 @@ public class StudentClassController {
 
     }
 
-    @GetMapping("class/student")
-    public List<Student> getStudentInClass(String classId){
+    @GetMapping("class/student/{classId}")
+    public List<Student> getStudentInClass(@PathVariable String classId){
         return studentClassService.findStudentInClass(classId);
     }
 
