@@ -17,14 +17,15 @@ import java.util.Date;
 @NoArgsConstructor
 public class StudentConfirmpaperId implements Serializable {
 
-    @Column(name = "Student")
+    @Column(name = "StudentId")
     private String student;
 
     @Column(name = "RequiredTime")
     private Date requiredTime;
 
-    @Column(name = "ConfirmationPaper")
+    @Column(name = "ConfirmationPaperId")
     private int confirmationPaper;
+
 
     public String getStudent() {
         return student;
