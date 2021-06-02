@@ -35,7 +35,7 @@ public class ConfirmationService {
     }
 
     public int update (ConfirmationPaper confirmationPaper){
-        return repository.update(confirmationPaper.getConfirmationPaperId(), confirmationPaper.getConfirmationPaperName());
+        return repository.save(confirmationPaper);
     }
 
 
