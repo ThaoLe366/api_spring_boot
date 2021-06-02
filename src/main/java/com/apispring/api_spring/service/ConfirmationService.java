@@ -35,7 +35,8 @@ public class ConfirmationService {
     }
 
     public int update (ConfirmationPaper confirmationPaper){
-        return repository.save(confirmationPaper);
+       repository.save(confirmationPaper); 
+        return 1;
     }
 
 
